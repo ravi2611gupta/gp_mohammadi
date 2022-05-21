@@ -1,0 +1,62 @@
+
+@media (max-width:768px) {
+    .headline_l{
+        min-height: 0em !important;
+    }
+    .headline_r{
+        min-height: 0em !important;
+    }
+    .headline_link{
+        flex-direction: column;
+        clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+    }
+    .clg-name{
+        text-align: center;
+    }
+    .clg-name-txt{
+        align-items: center;
+        text-align: center;
+    }
+    .cas-btn-out{
+        min-height: 9vh;
+        justify-content: center;
+    }
+    .my-slide img{
+        height: 20vh;
+    }
+    .my-fac-card{
+        height:200px !important;
+    }
+    .testi-box-inner{
+        height:70vh;
+    }
+    .text-area{
+        height:50vh;
+    }
+    .img-area{
+        width:20vw;
+        height: 10vh;
+        padding:0em;
+    }
+    .fixed-btn-one-in{
+        right:-2.7em;
+    }
+    .fixed-btn-two-in{
+        right:-2em;
+    }
+    .fixed-btn-one-in:hover{
+        right:4em;
+    }
+    .fixed-btn-two-in:hover{
+        right:3.4em;
+    }
+    .slider-text h3{
+        font-size:12px;
+    }
+    .slider-text h6{
+        font-size:7px;
+    }
+    
+    
+        
+}
