@@ -68,7 +68,7 @@ h3 span{
 }
 .my-para{
     font-family: var(--my-font-first);
-    font-weight: bold;
+    /* font-weight: bold; */
     color:var(--my-theme-color-t);
     font-size:18px;
     padding-top: 1em;
@@ -558,7 +558,7 @@ justify-content: center;
     font-weight: bold;
 }
 .my-fac-card{
-    height:170px !important;
+    min-height:100px !important;
 }
 .card-text{
     text-align: justify;
@@ -636,15 +636,18 @@ justify-content: center;
 }
 
 .img-area{
-    height: 30vh;
+    height: 150px;
     overflow: hidden;
-    padding:1em;    
+    padding:1em;
+    border-radius: 50%;    
+    text-align: right;
     box-shadow: inset 7px 7px 14px #504e4e,
     inset -7px -7px 14px #6a6868;
 }
 .img-area img{
     height:100%;
     width:100%;
+    border-radius: 50%;
     border: 0.2em solid var(--my-color-white);
 }
 

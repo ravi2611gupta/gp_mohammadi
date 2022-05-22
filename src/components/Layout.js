@@ -19,8 +19,9 @@ function Layout({children}) {
         
         {children}
 
-        <Sis/>
-        <Association/>
+        {/* <Sis/>
+        <Association/> */}
+        
         <FixedBtn/>
         <Footer/>
         

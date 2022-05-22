@@ -1,4 +1,4 @@
-import logo from '../img/logo/logo2.png'
+import logo from '../img/logo/gpm-logo-black.png'
 import React from 'react'
 
 function CollegeName() {
@@ -13,7 +13,8 @@ function CollegeName() {
       <h6>Affiliated to : Uttar Pradesh Board of Technical Education</h6>
     </div>
     <div className="col-sm-3 cas-btn-out">
-      <a href="#" target="_blank" className="btn"><i className="fas fa-cog fa-spin me-3"></i> college automation system</a>
+      <a href="#" className="btn"><i className="fas fa-users me-1"></i> About Us</a>
+      <a href="#" className="btn ms-2"><i className="fas fa-book me-1"></i> Branches Offered</a>
     </div>
   </div>
   )

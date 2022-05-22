@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Navbar() {
   return (
@@ -12,11 +13,11 @@ function Navbar() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="">HOME</a>
+                <Link className="nav-link active" aria-current="page" to="/">HOME</Link>
               </li>
 
                 <li className="nav-item px-2">
-                    <a className="nav-link" aria-current="page" href="">About Us</a>
+                    <Link className="nav-link" aria-current="page" to="/about">About Us</Link>
                 </li>
 
               <li className="nav-item dropdown">
@@ -24,11 +25,11 @@ function Navbar() {
                      ACADEMICS
                 </a>
                 <ul className="dropdown-menu drp-ul" aria-labelledby="navbarDropdown">
-                    <li><a className="dropdown-item drp-item" href="/">Branches Offered</a></li>
-                    <li><a className="dropdown-item drp-item" href="/">Faculty</a></li>
-                    <li><a className="dropdown-item drp-item" href="/">Academic Calendar</a></li>
+                    <li><Link className="dropdown-item drp-item" to="/branches">Branches Offered</Link></li>
+                    <li><Link className="dropdown-item drp-item" to="/faculty">Faculty</Link></li>
+                    <li><Link className="dropdown-item drp-item" to="/acal">Academic Calendar</Link></li>
                     <li><a className="dropdown-item drp-item" href="/">Time Table</a></li>
-                    <li><a className="dropdown-item drp-item" href="/">Library</a></li>
+                    <li><Link className="dropdown-item drp-item" to="/library">Library</Link></li>
                     <li><a className="dropdown-item drp-item" href="/">Holiday</a></li>
                 </ul>
               </li>
@@ -38,8 +39,8 @@ function Navbar() {
                  ADMISSION
                 </a>
                 <ul className="dropdown-menu drp-ul" aria-labelledby="navbarDropdown">
-                  <li><a className="dropdown-item drp-item" href="/">Admission Policy</a></li>
-                  <li><a className="dropdown-item drp-item" href="/">Admission Fee</a></li>
+                  <li><Link className="dropdown-item drp-item" to="/admission">Admission Policy</Link></li>
+                  <li><Link className="dropdown-item drp-item" to="/fee">Admission Fee</Link></li>
                   <li><a className="dropdown-item drp-item" href="/">Admission / Reservation Policy</a></li>
                   <li><a className="dropdown-item drp-item" href="/">Document Retention Policy</a></li>
                 </ul>

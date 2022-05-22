@@ -24,9 +24,7 @@
     .my-slide img{
         height: 20vh;
     }
-    .my-fac-card{
-        height:200px !important;
-    }
+    
     .testi-box-inner{
         height:70vh;
     }
@@ -36,6 +34,7 @@
     .img-area{
         width:20vw;
         height: 10vh;
+        float: right;
         padding:0em;
     }
     .fixed-btn-one-in{
