@@ -1,5 +1,6 @@
 import logo from '../img/logo/gpm-logo-black.png'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function CollegeName() {
   return (
@@ -13,8 +14,8 @@ function CollegeName() {
       <h6>Affiliated to : Uttar Pradesh Board of Technical Education</h6>
     </div>
     <div className="col-sm-3 cas-btn-out">
-      <a href="#" className="btn"><i className="fas fa-users me-1"></i> About Us</a>
-      <a href="#" className="btn ms-2"><i className="fas fa-book me-1"></i> Branches Offered</a>
+      <Link to="/About" className="btn"><i className="fas fa-users me-1"></i> About Us</Link>
+      <Link to="/Branches" className="btn ms-2"><i className="fas fa-book me-1"></i> Branches Offered</Link>
     </div>
   </div>
   )

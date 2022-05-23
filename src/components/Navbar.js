@@ -52,12 +52,12 @@ function Navbar() {
                 STUDENTS SUPPORT
                 </a>
                 <ul className="dropdown-menu drp-ul" aria-labelledby="navbarDropdown">
-                  <li><a className="dropdown-item drp-item" href="/">Anti Ragging</a></li>
-                  <li><a className="dropdown-item drp-item" href="/">Grievance Redressal</a></li>
-                  <li><a className="dropdown-item drp-item" href="/">Syllabus</a></li>
+                  <li><Link className="dropdown-item drp-item" to="/anti-ragging">Anti Ragging</Link></li>
+                  <li><Link className="dropdown-item drp-item" to="/grievance">Grievance Redressal</Link></li>
+                  <li><a className="dropdown-item drp-item" href="https://bteup.ac.in/webapp/SYLLABUS.aspx?type=6" target="_blank">Syllabus</a></li>
                   <li><a className="dropdown-item drp-item" href="/">Result</a></li>
-                  <li><a className="dropdown-item drp-item" href="/">Alumni</a></li>
-                  <li><a className="dropdown-item drp-item" href="/">Alumni Registration</a></li>
+                  <li><Link className="dropdown-item drp-item" to="/alumni">Alumni</Link></li>
+                  <li><Link className="dropdown-item drp-item" to="/alumni-reg">Alumni Registration</Link></li>
                </ul>
              </li>
                 
@@ -67,9 +67,9 @@ function Navbar() {
                   EXTRA CURRICULAR ACTIVITIES
                   </a>
                   <ul className="dropdown-menu drp-ul" aria-labelledby="navbarDropdown">
-                    <li><a className="dropdown-item drp-item" href="/">Sports</a></li>
-                    <li><a className="dropdown-item drp-item" href="/">Seminars</a></li>
-                    <li><a className="dropdown-item drp-item" href="/">Annual Function</a></li>
+                    <li><Link className="dropdown-item drp-item" to="/sports">Sports</Link></li>
+                    <li><Link className="dropdown-item drp-item" to="/seminars">Seminars</Link></li>
+                    <li><Link className="dropdown-item drp-item" to="/annual">Annual Function</Link></li>
                   
                  </ul>
                </li>
@@ -80,17 +80,17 @@ function Navbar() {
                         AICTE APPROVAL
                     </a>
                     <ul className="dropdown-menu drp-ul" aria-labelledby="navbarDropdown">
-                      <li><a className="dropdown-item drp-item" href="/">AICTE APPROVAL</a></li>
-                      <li><a className="dropdown-item drp-item" href="/">MOU</a></li>
+                      <li><Link className="dropdown-item drp-item" to="/aicte">AICTE APPROVAL</Link></li>
+                      <li><Link className="dropdown-item drp-item" to="/mou">MOU</Link></li>
                    </ul>
                  </li>
                    
                  <li className="nav-item px-2">
-                   <a className="nav-link active" aria-current="page" href="/">GALLERY</a>
+                   <Link className="nav-link active" aria-current="page" to="/gallery">GALLERY</Link>
                  </li>
                  
                  <li className="nav-item px-2">
-                   <a className="nav-link active" aria-current="page" href="/">CONTACT</a>
+                   <Link className="nav-link active" aria-current="page" to="/contact">CONTACT</Link>
                  </li>
             </ul>
           </div>

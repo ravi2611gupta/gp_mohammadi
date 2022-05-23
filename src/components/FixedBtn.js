@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function FixedBtn() {
   return (
@@ -6,7 +7,7 @@ function FixedBtn() {
             <div className="fixed-btn-one-in">
         <div className="icon"><i className="fas fa-user-tie"></i></div>
         <div className="fixed-btn-one">
-          <a href="#" className="btn" target="_blank"> Admission </a>
+          <Link to="/admission" className="btn"> Admission </Link>
         </div>
       </div>
 
@@ -14,7 +15,7 @@ function FixedBtn() {
       <div className="fixed-btn-two-in">
         <div className="icon"><i className="fas fa-headphones-alt"></i></div>
         <div className="fixed-btn-two">
-          <a href="contact.php" className="btn"> Enquiry </a>
+          <Link to="/contact" className="btn"> Enquiry </Link>
         </div>
       </div>
 

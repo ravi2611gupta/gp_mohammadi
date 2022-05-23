@@ -1,13 +1,11 @@
 import React from 'react'
+import Breadcrumb from '../../components/Breadcrumb'
 
 function index() {
   return (
     <>
-         <div className="row">
-          <div className="col-sm-12 breadcrumb">
-            <h3>About Us</h3>
-          </div>
-      </div>
+    
+      <Breadcrumb heading="About Us" />
 
      
           <div className="container">

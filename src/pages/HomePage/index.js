@@ -65,8 +65,8 @@ function index() {
 
       {/* <!-- =====inportant notice start===== --> */}
       <div className="row imp-notice">
-        <div className="col-sm-3 imp-notice-txt linear-bg">
-          <h4>Important Notice :</h4>
+        <div className="col-sm-3 imp-notice-txt pt-1 linear-bg">
+          <h5>Important Notice :</h5>
         </div>
         <div className="col-sm-9 imp-notice-mark">
           <marquee behavior="scroll" direction="left">
@@ -182,7 +182,7 @@ function index() {
                </p>
               </div>
 
-              <div className='col-sm-4 pb-3'>
+              <div className='col-sm-4 pb-3 pt-5'>
                 <img src={require('../../img/college.jpeg')} className='mt-0 mt-sm-5 w-100' alt="" />
               </div>
               
@@ -232,7 +232,7 @@ function index() {
                       <div className="card mb-3 my-fac-card">
                           <div className="row g-0">
                             <div className="col-md-3 faci-icon">
-                              <i className="fas fa-book-reader fa-4x"></i>
+                              <i className="fa fa-desktop fa-4x"></i>
                             </div>
                             <div className="col-md-9">
                               <div className="card-body">
@@ -280,7 +280,7 @@ function index() {
                         <div className="card mb-3 my-fac-card">
                           <div className="row g-0">
                             <div className="col-md-3 faci-icon">
-                              <i className="fas fa-users fa-4x"></i>
+                              <i className="fas fa-briefcase fa-4x"></i>
                             </div>
                             <div className="col-md-9">
                               <div className="card-body">
@@ -305,7 +305,7 @@ function index() {
                         <div className="card mb-3 my-fac-card">
                           <div className="row g-0">
                             <div className="col-md-3 faci-icon">
-                              <i className="fas fa-flask fa-4x"></i>
+                              <i className="fas fa-building fa-4x"></i>
                             </div>
                             <div className="col-md-9">
                               <div className="card-body">
@@ -330,7 +330,7 @@ function index() {
                         <div className="card mb-3 my-fac-card">
                           <div className="row g-0">
                             <div className="col-md-3 faci-icon">
-                              <i className="fas fa-brush fa-4x"></i>
+                              <i className="fa fa-volleyball fa-4x"></i>
                             </div>
                             <div className="col-md-9">
                               <div className="card-body">
@@ -355,7 +355,7 @@ function index() {
                         <div className="card mb-3 my-fac-card">
                           <div className="row g-0">
                             <div className="col-md-3 faci-icon">
-                              <i className="fas fa-building fa-4x"></i>
+                              <i className="fas fa-book fa-4x"></i>
                             </div>
                             <div className="col-md-9">
                               <div className="card-body">
@@ -563,7 +563,7 @@ function index() {
               <div className="card mb-3 my-fac-card">
                 <div className="row g-0">
                   <div className="col-md-12 pt-4 faci-icon">
-                    <i className="fas fa-building fa-4x"></i>
+                    <i className="fas fa-gears fa-4x"></i>
                   </div>
                   <div className="col-md-12">
                     <div className="card-body">
@@ -579,7 +579,7 @@ function index() {
               <div className="card mb-3 my-fac-card">
                 <div className="row g-0">
                   <div className="col-md-12 pt-4 faci-icon">
-                    <i className="fas fa-building fa-4x"></i>
+                    <i className="fas fa-desktop fa-4x"></i>
                   </div>
                   <div className="col-md-12">
                     <div className="card-body">

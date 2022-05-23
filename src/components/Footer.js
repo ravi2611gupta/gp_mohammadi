@@ -9,6 +9,7 @@ function Footer() {
       };
 
   return (
+    <>
     <div className="row">
     <div className="col-sm-12 footer-outer">
       <div className="container">
@@ -45,7 +46,7 @@ function Footer() {
        <div className="col-sm-3 pt-5">
          <h4 className="pb-3">Find The Way</h4>
 
-         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14459.877954274798!2d84.4258761!3d25.0351095!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9a204990259da353!2sDaudnagar%20College!5e0!3m2!1sen!2sin!4v1645881771067!5m2!1sen!2sin" style={mystyle} allowFullScreen="" loading="lazy"></iframe>
+         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14087.498101597055!2d80.3419829!3d28.0283106!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa9ef68d0bbc1caac!2sGovernment%20polytechnic%20mohammadi%20kheri!5e0!3m2!1sen!2sin!4v1653286724787!5m2!1sen!2sin" style={mystyle} allowFullScreen="" loading="lazy"></iframe>
 
          {/* style="width:100%; height:170px; border:0.1em dashed #fff;" */}
 
@@ -71,6 +72,47 @@ function Footer() {
      
      
   </div>
+
+
+    {/* modal1 start */}
+    {/* <div className="modal fade show" id="modal1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-modal="true" role="dialog" style="display: block;">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="staticBackdropLabel">Admission Reservation Policy</h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+              We do not offer any direct admissions, All the students are admitted through BTEUP counselling.
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div> */}
+
+
+      {/* modal 2 start */}
+      {/* <div className="modal fade" id="modal2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="staticBackdropLabel">Document Reservation Policy</h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+              We do not submit any original documents of the students. However students are requested to submit photo of their documents.
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div> */}
+
+      
+      </>
   )
 }
 

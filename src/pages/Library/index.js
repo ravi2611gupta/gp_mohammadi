@@ -1,13 +1,22 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
+import Breadcrumb from '../../components/Breadcrumb'
+import axios from 'axios'
 
-function index() {
+function Index() {
+    const [videos,setVideos] = useState([]);
+    useEffect(()=>{
+        const res = axios.get('http://localhost/mohammadi_api/video.php').then((data)=>{
+            // console.log(data)
+            setVideos(data.data)
+        });
+
+    },[])
+
   return (
     <>
-         <div className="row">
-            <div className="col-sm-12 breadcrumb">
-                <h3>Library</h3>
-            </div>
-        </div>
+
+        <Breadcrumb heading="Library" />
+
 
         <div className="container">
             <div className="row">
@@ -50,22 +59,19 @@ function index() {
 
                         <tbody>
 
-                                                        <tr>
-                                <td>1</td>
-                                <td>title </td>
-                                <td>1</td>
-                                <td>2nd</td>
-                                <td>maths</td>
-                                <td><a href="https://www.youtube.com/watch?v=rJOcOnhjhdI" target="_blank">Click Here to View</a></td>
-                            </tr>
-                                                        <tr>
-                                <td>2</td>
-                                <td>data structure</td>
-                                <td>3</td>
-                                <td>2nd</td>
-                                <td>data structure using C</td>
-                                <td><a href="https://youtu.be/PPDgi17D5NI" target="_blank">Click Here to View</a></td>
-                            </tr>
+                                                     
+                            {videos.map((video)=>{
+                                return(
+                                    <tr key={video.v_id}>
+                                    <td>{video.v_id}</td>
+                                    <td>{video.title} </td>
+                                    <td>{video.branch}</td>
+                                    <td>{video.year}</td>
+                                    <td>{video.subject}</td>
+                                    <td><a href={video.url} target="_blank">Click Here to View</a></td>
+                                </tr>
+                                )
+                            })}
                             
 
                         </tbody>
@@ -79,4 +85,4 @@ function index() {
   )
 }
 
-export default index
+export default Index

@@ -1,13 +1,11 @@
 import React from 'react'
+import Breadcrumb from '../../components/Breadcrumb'
 
 function index() {
   return (
     <>
-     <div className="row">
-            <div className="col-sm-12 breadcrumb">
-                <h3>Admission Policy</h3>
-            </div>
-        </div>
+
+        <Breadcrumb heading="Admission Policy" />
 
         <div className="container">
             <div className="row">
@@ -18,7 +16,7 @@ function index() {
                         Candidates get admission in Polytechnics through counselling after qualifying the
                         Entrance Examination conducted by Joint Entrance Examination Council (JEECUP), Lucknow. All the
                         reservations are effective as per UP government rules. For Courses, Qualification &amp; other
-                        details refer to <a href="http://www.jeecup.nic.in" style={{color:"#28c3be"}} target="_blank">http://www.jeecup.nic.in</a>
+                        details refer to <a href="http://www.jeecup.nic.in" style={{color:"#f46c22"}} target="_blank">http://www.jeecup.nic.in</a>
                     </p>
                 </div>
             </div>

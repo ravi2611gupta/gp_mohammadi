@@ -25,6 +25,16 @@
         height: 20vh;
     }
     
+    .slider-text {
+        padding: 0em 1.5em;
+        clip-path: polygon(0 0, 75% 0%, 100% 100%, 0% 100%);
+    }
+ 
+    .slider-text h3{
+        font-size: 10px;
+        padding: 0em;
+    }
+    
     .testi-box-inner{
         height:70vh;
     }
@@ -49,9 +59,7 @@
     .fixed-btn-two-in:hover{
         right:3.4em;
     }
-    .slider-text h3{
-        font-size:12px;
-    }
+    
     .slider-text h6{
         font-size:7px;
     }
