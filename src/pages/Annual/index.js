@@ -1,7 +1,17 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import Breadcrumb from '../../components/Breadcrumb'
 
-function index() {
+function Index() {
+
+  const [annual, setAnnual] = useState([])
+  useEffect(()=>{
+    const res = axios.get('http://localhost/mohammadi_api/annual_show.php').then((data)=>{
+      console.log(data)
+      setAnnual(data.data)
+    })
+  }, [])
+
   return (
     <>
      
@@ -41,4 +51,4 @@ function index() {
   )
 }
 
-export default index
+export default Index

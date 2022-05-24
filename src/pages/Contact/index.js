@@ -1,11 +1,50 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useState } from 'react'
+import toast from 'react-hot-toast'
 import Breadcrumb from '../../components/Breadcrumb'
 
-function index() {
+function Index() {
+
+    const [formData, setFormData] = useState({
+        fname:'',
+        lname:'',
+        mobile:'',
+        email:'',
+        message:''
+    })
+
+
+    const handleOnSubmit = (e)=>{
+        console.log("submitted")
+        e.preventDefault()
+        saveFormData()
+    } 
+
+    const saveFormData = async ()=>{
+
+        const res = await axios.post('http://localhost/mohammadi_api/contact_add.php', formData)
+        console.log(res)
+        if(res.data.status==true){
+            toast.success(res.data.message)
+            setFormData(
+                {
+                    fname:'',
+                    lname:'',
+                    mobile:'',
+                    email:'',
+                    message:''
+                }
+            )
+
+        }else{
+            toast.error(res.data.message)
+        }
+        
+    }
+
   return (
     <>
 
-    
     <Breadcrumb heading="Contact Us" />
 
 
@@ -40,22 +79,22 @@ function index() {
                 </div>
             </div>
 
-            <form action="" method="post" className="form">
+            <form className="form">
                 <div className="row">
-                    <div className="col-sm-6 pt-3"><input type="text" name="fname" className="form-control" placeholder="Enter your first Name :" required /></div>
-                    <div className="col-sm-6 pt-3"><input type="text" name="lname" className="form-control" placeholder="Enter your last Name :" required /></div>
+                        <div className="col-sm-6 pt-3"><input type="text" value={formData.fname} onChange={(e)=>{setFormData({ ...formData, fname:e.target.value })}} name="fname" className="form-control" placeholder="Enter your first Name :" required /></div>
+                    <div className="col-sm-6 pt-3"><input type="text" value={formData.lname} onChange={(e)=>{setFormData({ ...formData, lname:e.target.value })}} name="lname" className="form-control" placeholder="Enter your last Name :" required /></div>
                 </div>
                 <div className="row">
-                    <div className="col-sm-6 pt-3"><input type="text" name="mobile" className="form-control" placeholder="Enter your mobile no. :" maxLength="10" minLength="10" required /></div>
-                    <div className="col-sm-6 pt-3"><input type="email" name="email" className="form-control" placeholder="Enter your email :" required /></div>
+                    <div className="col-sm-6 pt-3"><input type="text" value={formData.mobile} onChange={(e)=>{setFormData({ ...formData, mobile:e.target.value })}} name="mobile" className="form-control" placeholder="Enter your mobile no. :" maxLength="10" minLength="10" required /></div>
+                    <div className="col-sm-6 pt-3"><input type="email" value={formData.email} onChange={(e)=>{setFormData({ ...formData, email:e.target.value })}} name="email" className="form-control" placeholder="Enter your email :" required /></div>
                 </div>
                 <div className="row pt-3">
                     <div className="col-sm-12">
-                        <textarea name="message" rows="5" placeholder="Write your message :" className="form-control"></textarea>
+                        <textarea name="message" rows="5" value={formData.message} onChange={(e)=>{setFormData({ ...formData, message:e.target.value })}} placeholder="Write your message :" className="form-control"></textarea>
                     </div>
                 </div>
                 <div className="row pt-3">
-                    <div className="col-sm-12 text-center"><input type="submit" className="btn btn-info px-5 my-btn1" /></div>
+                    <div className="col-sm-12 text-center"><input type="submit" value="Submit" onClick={()=>{handleOnSubmit()}} className="btn btn-info px-5 my-btn1" /></div>
                 </div>
             </form>
           </div>
@@ -73,4 +112,4 @@ function index() {
   )
 }
 
-export default index
+export default Index

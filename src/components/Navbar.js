@@ -1,7 +1,45 @@
 import React from 'react'
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom'
 
 function Navbar() {
+
+  const handlePolicy = ()=>{
+    // console.log("This is handlePolicy");
+    toast((t) => (
+      <div className="modal-dialog">
+      <div className="modal-content">
+        <div className="modal-header">
+          <p className="modal-title" id="staticBackdropLabel">Admission Reservation Policy</p>
+          <button type="button" onClick={() => toast.dismiss(t.id)} className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div className="modal-body">
+        We do not offer any direct admissions, All the students are admitted through BTEUP counselling.
+        </div>
+      </div>
+    </div>
+
+    ));
+
+  }
+
+
+  const handleDocPolicy = () =>{
+    toast((t) => (
+      <div className="modal-dialog">
+      <div className="modal-content">
+        <div className="modal-header">
+          <p className="modal-title" id="staticBackdropLabel">Document Reservation Policy</p>
+          <button type="button" onClick={() => toast.dismiss(t.id)} className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div className="modal-body">
+        We do not submit any original documents of the students. However students are requested to submit photo of their documents.
+        </div>
+      </div>
+    </div>
+    ));
+  }
+
   return (
     <div className="row">
     <div className="col-sm-12 p-0">
@@ -41,8 +79,8 @@ function Navbar() {
                 <ul className="dropdown-menu drp-ul" aria-labelledby="navbarDropdown">
                   <li><Link className="dropdown-item drp-item" to="/admission">Admission Policy</Link></li>
                   <li><Link className="dropdown-item drp-item" to="/fee">Admission Fee</Link></li>
-                  <li><a className="dropdown-item drp-item" href="/">Admission / Reservation Policy</a></li>
-                  <li><a className="dropdown-item drp-item" href="/">Document Retention Policy</a></li>
+                  <li><Link className="dropdown-item drp-item" to="/" onClick={handlePolicy}>Admission / Reservation Policy</Link></li>
+                  <li><Link className="dropdown-item drp-item" to="/" onClick={handleDocPolicy}>Document Retention Policy</Link></li>
                 </ul>
               </li>
   

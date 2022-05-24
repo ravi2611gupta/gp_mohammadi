@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import slide1 from '../../img/slider/slider1.jpg'
 import slide2 from '../../img/slider/slider2.jpg'
 
@@ -6,13 +6,48 @@ import slide2 from '../../img/slider/slider2.jpg'
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
+import axios from 'axios';
 
-function index() {
+function Index() {
   
+  const [slider, setSlider] = useState([])
+  useEffect(()=>{
+  const res = axios.get('http://localhost/mohammadi_api/slider_show.php').then((data)=>{
+    console.log(data)
+    setSlider(data.data)
+  })
+  },[])
+
+
+  const [noti, setNoti] = useState([])
+  useEffect(()=>{
+    const res1 = axios.get('http://localhost/mohammadi_api/noti_show.php').then((data1)=>{
+      console.log(data1)
+      setNoti(data1.data)
+    })
+  }, [])
+
+
+  const [latestNoti, setLatestNoti] = useState([])
+  useEffect(()=>{
+    const res2 = axios.get('http://localhost/mohammadi_api/latest_noti_show.php').then((data2)=>{
+      console.log(data2)
+      setLatestNoti(data2.data);
+    })
+  }, [])
+
+  
+  const [gal, setGal] = useState([])
+  useEffect(()=>{
+    const res3 = axios.get('http://localhost/mohammadi_api/gal_index_show.php').then((data3)=>{
+      console.log(data3)
+      setGal(data3.data)
+    })
+  }, [])
+
 
   return (
    
-      
     <>
      <div className="row">
         <div className="col-sm-9 p-0">
@@ -66,7 +101,7 @@ function index() {
       {/* <!-- =====inportant notice start===== --> */}
       <div className="row imp-notice">
         <div className="col-sm-3 imp-notice-txt pt-1 linear-bg">
-          <h5>Important Notice :</h5>
+          <h5>Latest Notice :</h5>
         </div>
         <div className="col-sm-9 imp-notice-mark">
           <marquee behavior="scroll" direction="left">
@@ -661,4 +696,4 @@ function index() {
   )
 }
 
-export default index
+export default Index

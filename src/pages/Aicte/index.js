@@ -1,7 +1,17 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import Breadcrumb from '../../components/Breadcrumb'
 
-function index() {
+function Index() {
+
+    const [aicte, setAicte] = useState([])
+    useEffect(()=>{
+        const res = axios.get('http://localhost/mohammadi_api/aicte_show.php').then((data)=>{
+            console.log(data)
+            setAicte(data.data)
+        })
+    }, [])
+
   return (
     <>
 
@@ -43,4 +53,4 @@ function index() {
   )
 }
 
-export default index
+export default Index

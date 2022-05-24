@@ -1,7 +1,18 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import Breadcrumb from '../../components/Breadcrumb'
 
-function index() {
+function Index() {
+
+  const [acal, setAcal] = useState([])
+  useEffect(()=>{
+     const res = axios.get('http://localhost/mohammadi_api/acal_show.php').then((data)=>{
+       console.table(data)
+       setAcal(data.data)
+     })     
+  }, [])
+
+
   return (
     <>
     
@@ -48,4 +59,4 @@ function index() {
   )
 }
 
-export default index
+export default Index

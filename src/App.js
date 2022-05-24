@@ -1,15 +1,15 @@
 import './App.css';
-import Home from "./pages/HomePage";
+import Home from "./pages/HomePage/Index";
 import About from "./pages/About";
 import Branches from "./pages/Branches";
-import Faculty from "./pages/Faculty";
-import Acal from "./pages/Acal";
-import Library from "./pages/Library";
+import Faculty from "./pages/Faculty/Index";
+import Acal from "./pages/Acal/Index";
+import Library from "./pages/Library/Index";
 import Admission from "./pages/Admission";
 import Fee from "./pages/Fee";
 import AntiRagging from "./pages/AntiRagging";
 import Grievance from "./pages/Grievance";
-import Alumni from "./pages/Alumni";
+import Alumni from "./pages/Alumni/Index";
 import AlumniReg from "./pages/AlumniReg";
 import Sports from "./pages/Sports";
 import Seminars from "./pages/Seminars";
@@ -22,12 +22,14 @@ import Contact from "./pages/Contact";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from './components/Layout';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
     <div className="App">
       
-      
+      <div><Toaster/></div>
+
     <BrowserRouter>
       <Routes>
         <Route path="/" element={

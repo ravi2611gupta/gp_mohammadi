@@ -22,7 +22,6 @@ function index() {
             </div>
 
 
-
             <div className="row">
                 <div className="col-sm-12 pt-4 pb-4 table-responsive">
                     <table className="table text-center table-bordered table-hover">
