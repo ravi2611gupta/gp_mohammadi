@@ -16,40 +16,47 @@ function Index() {
             'marks':'',
             'py':'',
             'wp':'',
+            'pic':[],
+            'cv':[],
             'dg':'',
-            'pic':'',
-            'cv':'',
             'au':'',
             'fb':''
         }
     )
 
+    const handlePicChange = (e)=>{
+        console.log(e.target.files)
+        setFormData({ ...formData, pic:e.target.files[0] })
+    }
+
+    const handleCvChange = (e)=>{
+        setFormData({ ...formData, cv:e.target.files[0] })
+    }
+
     const handleFormSummit = (e)=>{
         // console.log("submitted");
+        
          e.preventDefault()
          formSave()
     }
 
+
     const formSave = async ()=>{
-        try{
-            const res = await axios({
-                method:'post',
-                url:'http://localhost/mohammadi_api/alumni_add.php',
-                data:formData,
-                headers:{
-                    'Content-Type':'multipart/form-data'
-                }
-            })
 
-            console.log(res.data)
-            toast.success(res.data.message)
-        }
-        catch(error)
-        {
-            console.log(error)
-        }
+        // const res = await axios.post('http://localhost/mohammadi_api/alumni_add.php', formData)
 
-        
+        const res = await axios({
+            method: "post",
+            url: "http://localhost/mohammadi_api/alumni_add.php",
+            data: formData,
+            headers: { "Content-Type": "multipart/form-data" },
+          });
+
+
+        console.log(res)
+        // toast.success(res.data.message)
+
+
     }
 
 
@@ -141,11 +148,11 @@ function Index() {
                             <div className="row">
                                 <div className="col-sm-6 py-2">
                                     <label className="form-label" htmlFor="pic">Uploaded Your Pic : </label>
-                                    <input type="file" onChange={(e)=>{setFormData({ ...formData, pic:e.target.files[0] })}} className="form-control" id="pic" name="pic" required=""/>
+                                    <input type="file" onChange={handlePicChange} className="form-control" id="pic" name="pic" required=""/>
                                 </div>
                                 <div className="col-sm-6 py-2">
                                     <label className="form-label" htmlFor="cv">Upload Your CV/Resume : </label>
-                                    <input type="file" onChange={(e)=>{setFormData({ ...formData, cv:e.target.files[0] })}} className="form-control" id="cv" name="cv" required=""/>
+                                    <input type="file" onChange={handleCvChange} className="form-control" id="cv" name="cv" required=""/>
                                 </div>
                             </div>
 

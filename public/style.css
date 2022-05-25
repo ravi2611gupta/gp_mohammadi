@@ -1,5 +1,5 @@
 /* =============
-custom css start
+cuboardtom cboards start
 =============== */
 
 /* 
@@ -13,8 +13,8 @@ custom css start
     --my-theme-color-t:#5d5b5b;
      */
 
-    --my-theme-color:#f46c22;
-    --my-theme-color-s:#ff9933;
+    --my-theme-color:#155372;
+    --my-theme-color-s:#3ea9b8;
     --my-theme-color-t:#dadada;
     
 
@@ -80,7 +80,7 @@ h3 span{
     padding-bottom: 1em;
 }
 .my-para span{
-    color:#f46c22;
+    color:#155372;
 }
 .my-btn{
     background:var(--my-color-white);
@@ -449,7 +449,7 @@ index page start
     left:0%;
     height: 100%;
     clip-path: polygon(0 0, 80% 0%, 100% 100%, 0% 100%);
-    background-image: linear-gradient(to bottom, #f46c229f,#ff99339f);
+    background-image: linear-gradient(to bottom, #1553729f,#3ea9b89f);
     /* background-color: #5d5b5b7f; */
     /* background-image: url('img/arts.svg'); */
     /* background-size: cover; */
@@ -477,7 +477,7 @@ index page start
 .imp-notice-txt{
     min-height: 5vh;
     clip-path: polygon(95% 0%, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0%);
-    color:var(--my-color-black);
+    color:var(--my-color-white);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -499,7 +499,7 @@ index page start
 
 /* mentors section start */
 .my-mentor-card{
-    border:0.1em solid var(--my-theme-color-s);
+    
 }
 .card-img{
     border:0.1em solid var(--my-theme-color-s);
@@ -620,7 +620,7 @@ justify-content: center;
 .testi-box{
     min-height: 50vh;
     padding: 1em;
-    background-image: linear-gradient(to left, #f46c229f,#ff99339f), url('img/white_abst.jpg');
+    background-image: linear-gradient(to left, #1553729f,#3ea9b89f), url('img/white_abst.jpg');
     background-size: cover;
     background-attachment: fixed;
 }
@@ -785,7 +785,7 @@ justify-content: center;
 /* footer start */
 .footer-outer{
     min-height: 50vh;
-    background-image: linear-gradient(to right, #f46c229f,#ff99339f), url('img/white_abst.jpg');
+    background-image: linear-gradient(to right, #1553729f,#3ea9b89f), url('img/white_abst.jpg');
     background-size: cover;
 }
 .footer-outer h4{
@@ -861,7 +861,7 @@ about us page start
 
 .breadcrumb{
     min-height: 25vh;
-    background-image: linear-gradient(to right, #f46c229f,#ff99339f), url('img/white_abst.jpg');
+    background-image: linear-gradient(to right, #1553729f,#3ea9b89f), url('img/white_abst.jpg');
     background-size: cover;
     display: grid;
     place-items: center;
@@ -916,7 +916,7 @@ Vice-Chancellor's desk page start
     height: 0%;
     width:100%;
     z-index: 2;
-    background-image: linear-gradient(to bottom, #f46c229f,#ff99339f);
+    background-image: linear-gradient(to bottom, #1553729f,#3ea9b89f);
     transition: 0.4s;
 }
 .img-box-inner:hover::before{
@@ -1031,7 +1031,7 @@ contact start
 ============== */
 
 .con-main{
-    /* border:2px solid #f46c229f; */
+    /* border:2px solid #1553729f; */
 }
 
 .con-side-part{
@@ -1044,7 +1044,7 @@ contact start
     width:250px;
     border-radius: 50%;
     /* background-image: url('img/arts.svg'); */
-    /* background-image: linear-gradient(to left, #f46c229f,#ff99339f); */
+    /* background-image: linear-gradient(to left, #1553729f,#3ea9b89f); */
     background-size: cover;
     display: flex;
     align-items: center;
@@ -1080,13 +1080,13 @@ contact start
 
 .con-main form input,
 .con-main form textarea{
-    border:2px solid #f46c229f;
+    border:2px solid #1553729f;
     resize: none;
 }
 
 .con-side-part{
     min-height:500px;
-    background-image: linear-gradient(to left, #f46c229f,#ff99339f), url('img/book1.jpg');
+    background-image: linear-gradient(to left, #1553729f,#3ea9b89f), url('img/book1.jpg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -1114,3 +1114,108 @@ contact start
 /* ============
 contact start
 ============== */
+
+
+.my-card1 {
+    background-color: #FFF;
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    max-width: 500px;
+  }
+  .my-card1::before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 10px;
+    width: 101%;
+    height: 105%;
+    background-image: linear-gradient(to right bottom, #155372, #3ea9b8);
+    z-index: -1;
+    border-radius: 15px;
+    transform: rotate(-2deg);
+    box-shadow: 0 0 45px 5px rgba(0, 0, 0, .2);
+  }
+
+
+
+
+
+
+
+
+
+.stati-card {
+    background-color: #FFF;
+    padding: 3rem 3.5rem;
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    max-width: 500px;
+  }
+.stati ul li 
+{
+    list-style-type: none !important;
+}
+.stati-card::before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 10px;
+    width: 101%;
+    height: 110%;
+    background-image: linear-gradient(to right bottom, #155372, #3ea9b8);
+    z-index: -1;
+    border-radius: 15px;
+    transform: rotate(-5deg);
+    box-shadow: 0 0 45px 5px rgba(0, 0, 0, .2);
+  }
+  .stati-card li {
+    width: 50%;
+    margin: 15px 0;
+  }
+  
+  .stati-card li p {
+    display: flex;
+  }
+  
+  .stati-card li h3 {
+    display: inline-block;
+    font-size: 2rem;
+    color: #333;
+    vertical-align: top;
+    margin-right: 5px;
+    line-height: 1.2;
+  }
+  .stati-card li .fa {
+    font-size: .75rem;
+  }
+  .stati-card li p {
+    color: #9ea6a8;
+    font-weight: bold;
+    font-size: .95rem;
+  }
+  
+  
+  .clr-up {
+    color: green;
+  }
+  
+  .clr-down {
+    color: red;
+  }
+  
+  @media screen and (max-width: 500px) {
+    .stati-card::before {
+      top: -10px;
+      left: -2px;
+    }
+    .stati-card li {
+      width: 100%;
+    }
+    .stati-card li:not(:first-of-type) {
+      margin-top: 15px;
+    }
+  }

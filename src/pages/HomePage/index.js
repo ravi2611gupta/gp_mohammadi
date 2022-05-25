@@ -8,6 +8,66 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import axios from 'axios';
 
+const menOptions = {
+  margin: 1,
+  responsiveClass: true,
+  nav: true,
+  loop:true,
+  dots: false,
+  autoplay: true,
+  navText: ["Prev", "Next"],
+  smartSpeed: 1000,
+  responsive: {
+      0: {
+          items: 1,
+      },
+      400: {
+          items: 1,
+      },
+      600: {
+          items: 2,
+      },
+      700: {
+          items: 3,
+      },
+      1000: {
+          items: 4,
+
+      }
+  },
+};
+
+
+const galOptions = {
+  margin: 10,
+  responsiveClass: true,
+  nav: false,
+  loop:true,
+  dots: true,
+  autoplay: true,
+  navText: ["Prev", "Next"],
+  smartSpeed: 1000,
+  responsive: {
+      0: {
+          items: 1,
+      },
+      400: {
+      },
+      items: 1,
+      600: {
+          items: 2,
+      },
+      700: {
+          items: 3,
+      },
+      1000: {
+          items: 4,
+
+      }
+  },
+};
+
+
 function Index() {
   
   const [slider, setSlider] = useState([])
@@ -130,58 +190,74 @@ function Index() {
         <div className="col-sm-12 py-3">
           <div className="container">
             <div className="row">
-              <div className="col-sm-3">
-                <div className="card my-mentor-card">
+
+            <OwlCarousel className='owl-theme' {...menOptions}> 
+          <div className="item p-4">
+          <div className="col-sm-12">
+                <div className="card my-card1 my-mentor-card">
                   <div className="card-body">
                     <div className="card-img">
                       <img src={require('../../img/mentors/yogi.jpg')}/>
                     </div>
                     <div className="card-text my-card-text">
                       <h5><strong>Shir Yogi Adityanath</strong></h5>
-                      <h6><strong>Hon’ble Chief Minister Government of Uttar Pradesh</strong></h6>
+                      <h6>Hon’ble Chief Minister Government of Uttar Pradesh</h6>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="col-sm-3">
-                <div className="card my-mentor-card">
+          </div>
+        
+          <div className="item p-4">
+          <div className="col-sm-12">
+                <div className="card my-card1 my-mentor-card">
                   <div className="card-body">
                     <div className="card-img">
                       <img src={require('../../img/mentors/ashish.jpg')}/>
                     </div>
                     <div className="card-text my-card-text">
                       <h5><strong>Shir Ashish Patel</strong></h5>
-                      <h6><strong>Hon'ble Minister for Technical Education, U.P.</strong></h6>
+                      <h6>Hon'ble Minister for Technical Education, U.P.</h6>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="col-sm-3">
-                <div className="card my-mentor-card">
+          </div>
+
+          <div className="item p-4">
+          <div className="col-sm-12">
+                <div className="card my-card1 my-mentor-card">
                   <div className="card-body">
                     <div className="card-img">
                       <img src={require('../../img/mentors/amrit.jpg')}/>
                     </div>
                     <div className="card-text my-card-text">
                       <h5><strong>Shri Amrit Abhijat(I.A.S.)</strong></h5>
-                      <h6><strong>Principal Secretary, Technical Education, Uttar Pradesh</strong></h6>
+                      <h6>Principal Secretary, Technical Education, Uttar Pradesh</h6>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="col-sm-3">
-                <div className="card my-mentor-card">
+              </div>             
+          </div>
+
+          <div className="item p-4">
+          <div className="col-sm-12">
+                <div className="card my-card1 my-mentor-card">
                   <div className="card-body">
                     <div className="card-img">
                       <img src={require('../../img/mentors/manoj.jpg')}/>
                     </div>
                     <div className="card-text my-card-text">
                       <h5><strong>Shri Manoj Kumar</strong></h5>
-                      <h6><strong>Director Directorate of Technical Education, Uttar Pradesh</strong></h6>
+                      <h6>Director Directorate of Technical Education, Uttar Pradesh</h6>
                     </div>
                   </div>
                 </div>
               </div>
+          </div>
+          </OwlCarousel>
+
+          
             </div>
           </div>
         </div>
@@ -417,30 +493,28 @@ function Index() {
           </div>
         </div>
 
-        <div className="col-sm-4 stati">
-            <div className="row stati-u">
-              <div className="col-sm-6 stati-u1 stati-box">
-                <h1 className="counter">5</h1>
-                <h6>+ Year of Establishment</h6>
-              </div>
-  
-              <div className="col-sm-6 stati-u2 stati-box">
-                <h1 className="counter">15 </h1>
-                <h6>+ Staff</h6>
-              </div>
-            </div>
-            
-            <div className="row stati-d">
-              <div className="col-sm-6 stati-d1 stati-box">
-                <h1 className="counter">3 </h1>
-                <h6>+ Branches</h6>
-              </div>
-              
-              <div className="col-sm-6 stati-d2 stati-box">
-                <h1 className="counter">9000 </h1>
-                <h6>+ students</h6>
-              </div>
-            </div>
+        <div className="col-sm-4 stati my-5 my-sm-0">
+
+          <ul className="stati-card">
+        <li>
+            <h3>5</h3><i className="fa fa-plus clr-up"></i>
+          <p> Year of <br /> Establishment</p>
+        </li>
+        <li>
+              <h3>15</h3><i className="fa fa-plus clr-up"></i>
+            <p> Staff</p>
+          </li>
+        <li>
+            <h3>3</h3><i className="fa fa-plus clr-up"></i>
+          <p>Branches</p>
+        </li>
+        <li>
+            <h3>9000</h3><i className="fa fa-plus clr-up"></i>
+          <p>students</p>
+        </li>
+          </ul>
+
+
           </div>
        
         
@@ -669,7 +743,7 @@ function Index() {
 
      <div className="container">
      <div className="row pb-5">
-      <OwlCarousel className='owl-theme' loop margin={10} nav={false} items={4}>
+      <OwlCarousel className='owl-theme' {...galOptions}>
  
             <div className="item"><img src={ require('../../img/gallery/gal1.jpeg') } style={{height: "160px"}} /></div>
             <div className="item"><img src={ require('../../img/gallery/gal2.jpeg') }  style={{height: "160px"}}/></div>
