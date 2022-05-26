@@ -16,8 +16,8 @@ function Index() {
             'marks':'',
             'py':'',
             'wp':'',
-            'pic':[],
-            'cv':[],
+            'pic':'',
+            'cv':'',
             'dg':'',
             'au':'',
             'fb':''
@@ -42,19 +42,20 @@ function Index() {
 
 
     const formSave = async ()=>{
+      
+        console.log(formData.pic)
+        const res = await axios.post('http://localhost/mohammadi_api/alumni_add.php', formData)
 
-        // const res = await axios.post('http://localhost/mohammadi_api/alumni_add.php', formData)
-
-        const res = await axios({
-            method: "post",
-            url: "http://localhost/mohammadi_api/alumni_add.php",
-            data: formData,
-            headers: { "Content-Type": "multipart/form-data" },
-          });
+        // const res = await axios({
+        //     method: "post",
+        //     url: "http://localhost/mohammadi_api/alumni_add.php",
+        //     data: formData,
+        //     headers: { "Content-Type": "multipart/form-data" },
+        //   });
 
 
         console.log(res)
-        // toast.success(res.data.message)
+        toast.success(res.data.message)
 
 
     }

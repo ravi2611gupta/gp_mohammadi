@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import logo2 from '../img/logo/logo-gpm.png'
 
 function Footer() {
@@ -61,9 +62,9 @@ function Footer() {
     <div className="col-sm-12 footer-links">
          <a href="#"> Quick Links |</a>
          <a href="https://www.digilocker.gov.in/dashboard" target="_blank"> Digilocker |</a>
-         <a href="gallery.html"> Image Gallery |</a>
-         <a href="press.html"> Press Release |</a>
-         <a href="faq.html"> FAQ's </a>
+         <Link to="/gallery"> Image Gallery |</Link>
+         <a href="#"> Press Release |</a>
+         <a href="#"> FAQ's </a>
        </div>
 
        <div className="col-sm-12 footer-copy">
@@ -73,27 +74,7 @@ function Footer() {
      
   </div>
 
-
-  
-
-
-      {/* modal 2 start */}
-      {/* <div className="modal fade" id="modal2" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="staticBackdropLabel"></h5>
-              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div className="modal-body">
-              
-            </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div> */}
+ 
 
       
       </>

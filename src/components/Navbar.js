@@ -79,8 +79,8 @@ function Navbar() {
                 <ul className="dropdown-menu drp-ul" aria-labelledby="navbarDropdown">
                   <li><Link className="dropdown-item drp-item" to="/admission">Admission Policy</Link></li>
                   <li><Link className="dropdown-item drp-item" to="/fee">Admission Fee</Link></li>
-                  <li><Link className="dropdown-item drp-item" to="/" onClick={handlePolicy}>Admission / Reservation Policy</Link></li>
-                  <li><Link className="dropdown-item drp-item" to="/" onClick={handleDocPolicy}>Document Retention Policy</Link></li>
+                  <li><a className="dropdown-item drp-item" href="#" onClick={handlePolicy}>Admission / Reservation Policy</a></li>
+                  <li><a className="dropdown-item drp-item" href="#" onClick={handleDocPolicy}>Document Retention Policy</a></li>
                 </ul>
               </li>
   

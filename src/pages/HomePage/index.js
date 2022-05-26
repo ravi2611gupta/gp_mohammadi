@@ -7,6 +7,7 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const menOptions = {
   margin: 1,
@@ -14,7 +15,7 @@ const menOptions = {
   nav: true,
   loop:true,
   dots: false,
-  autoplay: true,
+  autoplay: false,
   navText: ["Prev", "Next"],
   smartSpeed: 1000,
   responsive: {
@@ -200,7 +201,7 @@ function Index() {
                       <img src={require('../../img/mentors/yogi.jpg')}/>
                     </div>
                     <div className="card-text my-card-text">
-                      <h5><strong>Shir Yogi Adityanath</strong></h5>
+                      <h5><strong>Shri Yogi <br /> Adityanath</strong></h5>
                       <h6>Hon’ble Chief Minister Government of Uttar Pradesh</h6>
                     </div>
                   </div>
@@ -216,7 +217,7 @@ function Index() {
                       <img src={require('../../img/mentors/ashish.jpg')}/>
                     </div>
                     <div className="card-text my-card-text">
-                      <h5><strong>Shir Ashish Patel</strong></h5>
+                      <h5><strong>Shri Ashish <br /> Patel</strong></h5>
                       <h6>Hon'ble Minister for Technical Education, U.P.</h6>
                     </div>
                   </div>
@@ -232,7 +233,7 @@ function Index() {
                       <img src={require('../../img/mentors/amrit.jpg')}/>
                     </div>
                     <div className="card-text my-card-text">
-                      <h5><strong>Shri Amrit Abhijat(I.A.S.)</strong></h5>
+                      <h5><strong>Shri Subhash Chand Sharma (I.A.S.)</strong></h5>
                       <h6>Principal Secretary, Technical Education, Uttar Pradesh</h6>
                     </div>
                   </div>
@@ -248,8 +249,8 @@ function Index() {
                       <img src={require('../../img/mentors/manoj.jpg')}/>
                     </div>
                     <div className="card-text my-card-text">
-                      <h5><strong>Shri Manoj Kumar</strong></h5>
-                      <h6>Director Directorate of Technical Education, Uttar Pradesh</h6>
+                      <h5><strong>Shri Sunil Kumar Chaudhary (I.A.S)</strong></h5>
+                      <h6>Special Secretory, Technical Education, U.P.</h6>
                     </div>
                   </div>
                 </div>
@@ -286,10 +287,10 @@ function Index() {
                <p className=" txt-justi my-para abt-us">
                 
               <span style={{color:"#fff", fontSize:"1.3em", fontWeight:"bold"}}>Welcome To Government Polytechnic Mohammadi Kheri</span> <br/><br />
-                Government Polytechnic Mohammadi, Kheri was established in the year of 2017. The present campus measured 7 Acres of land.
-                The institution is running 3 courses in Computer Science and Engineering, Civil Engineering and Electrical Engineering  with intake of 60 students in each.
+                Government Polytechnic Mohammadi, Kheri was established in the year of 2017. The present campus measures 7 acres of land.
+                The institution is running 3 courses in Computer Science and Engineering, Civil Engineering and Electrical Engineering  with intake of 60 students in each branch.
                 Government Polytechnic Mohammadi, Kheri is approved by AICTE Govt. of India and affiliated to Board of Technical Education UP (BTEUP).
-                The College has fully furnished air conditioned Computer Lab equipped with Broadband Internet facility and video projection facility.
+                The College has fully furnished, air conditioned Computer Lab equipped with Broadband Internet facility and video projection facility.
                </p>
               </div>
 
@@ -348,7 +349,7 @@ function Index() {
                             <div className="col-md-9">
                               <div className="card-body">
                                 <h6 className="card-title">MODERN COMPUTER LAB</h6>
-                                <p className="card-text">The College has fully furnished air conditioned Computer Lab equipped with Broadband Internet and video projection facility.</p>
+                                <p className="card-text">The College has fully furnished, air conditioned Computer Lab equipped with Broadband Internet and video projection facility.</p>
                               </div>
                             </div>
                           </div>
@@ -396,7 +397,7 @@ function Index() {
                             <div className="col-md-9">
                               <div className="card-body">
                                 <h6 className="card-title">ANNUAL JOB FAIR</h6>
-                                <p className="card-text">We will organize Job Fair every year for Better Opportunity to our students as we as for students for other polytechnic students.</p>
+                                <p className="card-text">We organize Job Fair every year for better career opportunity to our students as well as for students for other polytechnic students.</p>
                               </div>
                             </div>
                           </div>
@@ -421,7 +422,7 @@ function Index() {
                             <div className="col-md-9">
                               <div className="card-body">
                                 <h6 className="card-title">CLASSROOMS</h6>
-                                <p className="card-text">The college has classrooms which are spacious, well furnished, and ventilated form the basic infrastructure of the college.</p>
+                                <p className="card-text">The college has classrooms spacious, well furnished, and ventilated classrooms and infrastructure.</p>
                               </div>
                             </div>
                           </div>
@@ -471,7 +472,7 @@ function Index() {
                             <div className="col-md-9">
                               <div className="card-body">
                                 <h6 className="card-title">LIBRARY</h6>
-                                <p className="card-text">The College Library provides a very conducive atmosphere for reading and learning. It is well equipped with more than 3000 books. Government Polytechnic Mohammdi is member of National Digital Library and also every student have their email account on this library.</p>
+                                <p className="card-text">The College Library provides a very conducive atmosphere for reading and learning. It is well equipped with more than 3000 books. Government Polytechnic Mohammadi is a member of National Digital Library with every student having their access to this library.</p>
                               </div>
                             </div>
                           </div>
@@ -493,29 +494,29 @@ function Index() {
           </div>
         </div>
 
-        <div className="col-sm-4 stati my-5 my-sm-0">
-
-          <ul className="stati-card">
-        <li>
-            <h3>5</h3><i className="fa fa-plus clr-up"></i>
-          <p> Year of <br /> Establishment</p>
-        </li>
-        <li>
-              <h3>15</h3><i className="fa fa-plus clr-up"></i>
-            <p> Staff</p>
+        <div className="col-sm-4 stati my-5 px-4 my-sm-0">
+          
+            <ul className="stati-card">
+          <li>
+              <h3>5</h3><i className="fa fa-plus clr-up"></i>
+            <p> Year of <br /> Establishment</p>
           </li>
-        <li>
-            <h3>3</h3><i className="fa fa-plus clr-up"></i>
-          <p>Branches</p>
-        </li>
-        <li>
-            <h3>9000</h3><i className="fa fa-plus clr-up"></i>
-          <p>students</p>
-        </li>
-          </ul>
+          <li>
+                <h3>15</h3><i className="fa fa-plus clr-up"></i>
+              <p> Staff</p>
+            </li>
+          <li>
+              <h3>3</h3><i className="fa fa-plus clr-up"></i>
+            <p>Branches</p>
+          </li>
+          <li>
+              <h3>9000</h3><i className="fa fa-plus clr-up"></i>
+            <p>Students</p>
+          </li>
+            </ul>
 
-
-          </div>
+            </div>
+          
        
         
       </div>
@@ -545,13 +546,12 @@ function Index() {
               </div>
               <div className="col-sm-9">
                 <p className=" txt-justi my-para abt-us">
-                Our institute  established in 2017, which providing  technical manpower to the nation. We want to produce such technocrats having all round personality i.e. sound technically, mentally, spiritually so they may prove themselves as an asset to the nation. Whenever or wherever they be placed they may proved themselves as a source of light in all fields of the society.
+                Our institute was established in 2017, which aims at providing educationally technical manpower to the nation. We aim to produce technocrats with an all rounder personality i.e. technically, mentally and spiritually sound so they may prove themselves as an asset to the nation. Whenever or wherever they ought to be placed, they must prove themselves as a source of light in all fields of the society.
                 <br/><br/>
-                Hope this website come in handy to students, staff and parents for better information &amp; communication.
-                Best Wishes…..
+                I am confident this website will guide the students, staff and parents for better information &amp; communication with our institute.
 
                   <br/><br/>
-                  <a href="principal.html" className="btn my-btn">Read More</a>
+                  <Link to="/" className="btn my-btn">Read More</Link>
                 </p>
               </div>
             </div>
@@ -566,22 +566,19 @@ function Index() {
 
 
       {/* <!-- =====notice section start=====  --> */}
+      
       <div className="container">
         <div className="row">
-          <div className="col-sm-12 pb-3 pt-5">
+
+          <div className="col-sm-8">
+            <div className="row">
+            <div className="col-sm-12 pb-3 pt-5">
             <h3><span>Our</span>  Testimonial</h3>
             <div className="underline1 linear-bg"></div>
           </div>
-        </div>
-      </div>
-      
+            </div>
 
-      <div className="container">
-        <div className="row">
-          
 
-       
-          <div className="col-sm-8">
             <div className="row">
               <div className="col-sm-12">
                 <div id="testi" className="carousel slide" data-bs-ride="carousel">
@@ -667,7 +664,16 @@ function Index() {
           
         
           <div className='col-sm-4 pb-3 pb-sm-0'>
-        <OwlCarousel className='owl-theme' loop margin={10} nav={false} autoplay items={1}> 
+            <div className="row">
+            <div className="col-sm-12 pt-5 pb-3">
+              <h3><span>Courses</span>  Offered</h3>
+              <div className="underline1 linear-bg"></div>
+            </div>
+          </div>
+          
+            <div className="row">
+              <div className="col-sm-12 pt-5">
+              <OwlCarousel className='owl-theme' loop margin={10} nav={false} autoplay items={1}> 
           <div className="item">
               <div className="card mb-3 my-fac-card">
                 <div className="row g-0">
@@ -677,7 +683,7 @@ function Index() {
                   <div className="col-md-12">
                     <div className="card-body">
                       <h6 className="card-title">ELECTRICAL ENGINEERING</h6>
-                      <p className="card-text text-center">In Three Year Diploma COURSES, the institute is running Electrical Engineering.</p>
+                      <p className="card-text text-center">In Three Year Diploma COURSES, the institute is offers Electrical Engineering.</p>
                     </div>
                   </div>
                 </div>
@@ -693,7 +699,7 @@ function Index() {
                   <div className="col-md-12">
                     <div className="card-body">
                       <h6 className="card-title">COMPUTER SCIENCE &amp; ENGINEERING</h6>
-                      <p className="card-text text-center">In Three Year Diploma COURSES, the institute is running Computer Science &amp; Engineering.</p>
+                      <p className="card-text text-center">In Three Year Diploma COURSES, the institute is offers Computer Science &amp; Engineering.</p>
                     </div>
                   </div>
                 </div>
@@ -709,13 +715,16 @@ function Index() {
                   <div className="col-md-12">
                     <div className="card-body">
                       <h6 className="card-title">CIVIL ENGINEERING</h6>
-                      <p className="card-text text-center">In Three Year Diploma COURSES, the institute is running Civil Engineering.</p>
+                      <p className="card-text text-center">In Three Year Diploma COURSES, the institute is offers Civil Engineering.</p>
                     </div>
                   </div>
                 </div>
               </div>
           </div>
           </OwlCarousel>
+              </div>
+            </div>
+     
         </div>
 
 
