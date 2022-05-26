@@ -621,6 +621,7 @@ justify-content: center;
     min-height: 50vh;
     padding: 1em;
     background-image: linear-gradient(to left, #1553729f,#3ea9b89f), url('img/white_abst.jpg');
+    background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
 }
@@ -787,6 +788,7 @@ justify-content: center;
     min-height: 50vh;
     background-image: linear-gradient(to right, #1553729f,#3ea9b89f), url('img/white_abst.jpg');
     background-size: cover;
+    background-repeat: no-repeat;
 }
 .footer-outer h4{
     color:var(--my-color-white);
@@ -863,6 +865,7 @@ about us page start
     min-height: 25vh;
     background-image: linear-gradient(to right, #1553729f,#3ea9b89f), url('img/white_abst.jpg');
     background-size: cover;
+    background-repeat: no-repeat;
     display: grid;
     place-items: center;
 }

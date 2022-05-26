@@ -21,13 +21,13 @@ function Index() {
     fb: "",
   });
 
-  const [selectedFile, setSelectedFile] = React.useState(null);
+//   const [selectedFile, setSelectedFile] = React.useState(null);
 
 
   const handlePicChange = (e) => {
     // console.log(e.target.files);
-    // setFormData({ ...formData, pic: e.target.files[0] });
-    setSelectedFile(e.target.files[0])
+    setFormData({ ...formData, pic: e.target.files[0] });
+    // setSelectedFile(e.target.files[0])
 
   };
 
@@ -42,36 +42,47 @@ function Index() {
     formSave();
   };
 
-  const formSave = async () => {
-    const formData = new FormData();
+   const formSave = async () => {
 
-    formData.append("avatar", selectedFile);
-    formData.append("type","alumni_image");
-    try {
-      const response = await axios({
-        method: "post",
-        url: "http://localhost/mohammadi_api/file_upload.php",
-        data: formData,
-        headers: { "Content-Type": "multipart/form-data",},
-      });
+//     const formData = new FormData();
 
-      console.log(response)
-    } catch (error) {
-      console.log(error);
-    }
+//     formData.append("avatar", selectedFile);
+//     formData.append("type","alumni_image");
 
-    // console.log(formData)
+//     try {
+//       const response = await axios({
+//         method: "post",
+//         url: "http://localhost/mohammadi_api/file_upload.php",
+//         data: formData,
+//         headers: { "Content-Type": "multipart/form-data",},
+//       });
+
+//       console.log(response)
+
+//     } catch (error) {
+//       console.log(error);
+//     }
+
+    console.log(formData)
     // const res = await axios.post('http://localhost/mohammadi_api/alumni_add.php', formData)
 
-    // const res = await axios({
-    //     method: "post",
-    //     url: "http://localhost/mohammadi_api/alumni_add.php",
-    //     data: formData,
-    //     headers: { "Content-Type": "multipart/form-data" },
-    //   });
+    try {
+            const res = await axios({
+            method: "post",
+            url: "http://localhost/mohammadi_api/alumni_add.php",
+            data: formData,
+            headers: { "Content-Type": "multipart/form-data",},
+            });
+    
+            console.log(res)
+            toast.success(res.data.message)
+        
+            } catch (error) {
+              console.log(error);
+            }
 
     // console.log(res);
-    // toast.success(res.data.message)
+  
   };
 
   return (
