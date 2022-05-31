@@ -6,7 +6,7 @@ function Index() {
 
     const [alumni, setAlumni] = useState([])
     useEffect(()=>{
-        const res = axios.get('http://localhost/mohammadi_api/alumni_show.php').then((data)=>{
+        const res = axios.get('https://test.polyprep.co.in/mohammadi_api/alumni_show.php').then((data)=>{
             console.log(data)
             setAlumni(data.data)
         })
@@ -38,17 +38,23 @@ function Index() {
                         </thead>
 
                         <tbody>
+                        {alumni?alumni.map((alumni) => {
+                        return (
+                        
 
-                                <tr>
-                                <td>1</td>
-                                <th><img src={require('../../img/teaching_staff/male_avatar.jpg')} alt="Sorry Something went wrong :(" /></th>
-                                <td><strong> Shiva Goyal </strong></td>
-                                <td>Software Developer</td>
-                                <td>Computer Science and Engineering</td>
-                                <td>2022</td>
-                                <td>2512505222</td>
-                                <td>shiva@gmail.com</td>
-                            </tr>
+                        <tr>
+                        <td>{alumni.id}</td>
+                        <th><img src={`https://test.polyprep.co.in/mohammadi_api/files/alumni_pic/${alumni.pic}`} alt="Sorry Something went wrong :(" /></th>
+                        <td><strong> {alumni.name} </strong></td>
+                        <td>{alumni.designation}</td>
+                        <td>{alumni.branch}</td>
+                        <td>{alumni.year}</td>
+                        <td>{alumni.mob}</td>
+                        <td>{alumni.email}</td>
+                        </tr>
+                        );
+                        }):""}
+
                             
 
                         </tbody>

@@ -73,7 +73,7 @@ function Index() {
   
   const [slider, setSlider] = useState([])
   useEffect(()=>{
-  const res = axios.get('http://localhost/mohammadi_api/slider_show.php').then((data)=>{
+  const res = axios.get('https://test.polyprep.co.in/mohammadi_api/slider_show.php').then((data)=>{
     console.log(data)
     setSlider(data.data)
   })
@@ -82,7 +82,7 @@ function Index() {
 
   const [noti, setNoti] = useState([])
   useEffect(()=>{
-    const res1 = axios.get('http://localhost/mohammadi_api/noti_show.php').then((data1)=>{
+    const res1 = axios.get('https://test.polyprep.co.in/mohammadi_api/noti_show.php').then((data1)=>{
       console.log(data1)
       setNoti(data1.data)
     })
@@ -91,8 +91,8 @@ function Index() {
 
   const [latestNoti, setLatestNoti] = useState([])
   useEffect(()=>{
-    const res2 = axios.get('http://localhost/mohammadi_api/latest_noti_show.php').then((data2)=>{
-      console.log(data2)
+    const res2 = axios.get('https://test.polyprep.co.in/mohammadi_api/latest_noti_show.php').then((data2)=>{
+      console.log("Latest Notices : ",data2)
       setLatestNoti(data2.data);
     })
   }, [])
@@ -100,7 +100,7 @@ function Index() {
   
   const [gal, setGal] = useState([])
   useEffect(()=>{
-    const res3 = axios.get('http://localhost/mohammadi_api/gal_index_show.php').then((data3)=>{
+    const res3 = axios.get('https://test.polyprep.co.in/mohammadi_api/gallery_show_all.php').then((data3)=>{
       console.log(data3)
       setGal(data3.data)
     })
@@ -149,7 +149,11 @@ function Index() {
         <div className="col-sm-3 p-2 board linear-bg-l">
           <h5 className="board-h">Notice Board</h5>
           <marquee behavior="scroll" direction="down" className="marquee-notice">
-            <img src={require('../../img/new1.gif')}/> <a href="" target="_blank"> Notice will be uploaded soon...! </a>
+                {noti?noti.map((noti) => {
+                  return (
+                    <a href={`https://test.polyprep.co.in/mohammadi_api/files/notice/${noti.file_name}`} key={noti.file_id} target="_blank" style={{display:"block"}}> <img src={require('../../img/new1.gif')}/>  {noti.notice} </a>
+                  );
+                }):"Sorry, no data found!"}
           </marquee>
         </div>
 
@@ -166,7 +170,12 @@ function Index() {
         </div>
         <div className="col-sm-9 imp-notice-mark">
           <marquee behavior="scroll" direction="left">
-            <a href="#"><img src={require('../../img/new1.gif')}/>&nbsp; Welcome to the new website of Government Polytechnic, Mohammadi Kheri.</a>
+          {latestNoti?noti.map((lnoti) => {
+                  return (
+                    <a href={`https://test.polyprep.co.in/mohammadi_api/files/notice/${lnoti.file_name}`} key={lnoti.file_id} target="_blank"> <img src={require('../../img/new1.gif')}/>  {lnoti.notice} </a>
+                  );
+                }):"Sorry, no data found!"}
+
           </marquee>
         </div>
       </div>
@@ -250,7 +259,7 @@ function Index() {
                     </div>
                     <div className="card-text my-card-text">
                       <h5><strong>Shri Sunil Kumar Chaudhary (I.A.S)</strong></h5>
-                      <h6>Special Secretory, Technical Education, U.P.</h6>
+                      <h6>Special Secretary, Technical Education, U.P.</h6>
                     </div>
                   </div>
                 </div>
@@ -753,17 +762,24 @@ function Index() {
      <div className="container">
      <div className="row pb-5">
       <OwlCarousel className='owl-theme' {...galOptions}>
+
+            {gal?gal.map((gal) => {
+              return (
+                <div className="item" key={gal.gal_id}><img src={`https://test.polyprep.co.in/mohammadi_api/files/gallery/${gal.pic}`} style={{height: "160px"}} /></div>
+              );
+            }):""}
  
-            <div className="item"><img src={ require('../../img/gallery/gal1.jpeg') } style={{height: "160px"}} /></div>
-            <div className="item"><img src={ require('../../img/gallery/gal2.jpeg') }  style={{height: "160px"}}/></div>
+            {/* <div className="item"><img src={ require('../../img/gallery/gal2.jpeg') }  style={{height: "160px"}}/></div>
             <div className="item"><img src={ require('../../img/gallery/gal3.jpg') }  style={{height: "160px"}}/></div>
             <div className="item"><img src={ require('../../img/gallery/gal4.jpg') }  style={{height: "160px"}}/></div>
-            <div className="item"><img src={ require('../../img/gallery/gal2.jpeg') }  style={{height: "160px"}}/></div>
+            <div className="item"><img src={ require('../../img/gallery/gal2.jpeg') }  style={{height: "160px"}}/></div> */}
+
       </OwlCarousel>
 
       
         {/* <div className="col-sm-12 in-gall owl-carousel owl-theme">  
         </div> */}
+        
       </div>
      </div>
       {/* <!-- =====Gallery end===== --> */}

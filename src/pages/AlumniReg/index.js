@@ -52,7 +52,7 @@ function Index() {
 //     try {
 //       const response = await axios({
 //         method: "post",
-//         url: "http://localhost/mohammadi_api/file_upload.php",
+//         url: "https://test.polyprep.co.in/mohammadi_api/file_upload.php",
 //         data: formData,
 //         headers: { "Content-Type": "multipart/form-data",},
 //       });
@@ -64,19 +64,19 @@ function Index() {
 //     }
 
     console.log(formData)
-    // const res = await axios.post('http://localhost/mohammadi_api/alumni_add.php', formData)
+    // const res = await axios.post('https://test.polyprep.co.in/mohammadi_api/alumni_add.php', formData)
 
     try {
             const res = await axios({
-            method: "post",
-            url: "http://localhost/mohammadi_api/alumni_add.php",
-            data: formData,
-            headers: { "Content-Type": "multipart/form-data",},
-            });
-    
-            console.log(res)
-            toast.success(res.data.message)
-        
+              method: "post",
+              url: "https://test.polyprep.co.in/mohammadi_api/alumni_add.php",
+              data: formData,
+              headers: { "Content-Type": "multipart/form-data",},
+              });
+      
+              console.log(res)
+              toast.success(res.data.message)
+          
             } catch (error) {
               console.log(error);
             }

@@ -5,8 +5,7 @@ import axios from 'axios'
 function Index() {
     const [videos,setVideos] = useState([]);
     useEffect(()=>{
-        const res = axios.get('http://localhost/mohammadi_api/video_show.php').then((data)=>{
-            // console.log(data)
+    const res = axios.get('https://test.polyprep.co.in/mohammadi_api/video_show.php').then((data)=>{
             setVideos(data.data)
         });
 

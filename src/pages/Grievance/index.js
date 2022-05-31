@@ -28,7 +28,7 @@ function Index() {
    const saveForm = async ()=>{
     
      console.log("Calling Serve Post ")
-     const res = await  axios.post('http://localhost/mohammadi_api/grievance_add.php',formData);
+     const res = await  axios.post('https://test.polyprep.co.in/mohammadi_api/grievance_add.php',formData);
 
   console.log("response",res)
     toast.success(res.data.message)

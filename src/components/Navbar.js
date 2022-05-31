@@ -1,7 +1,26 @@
-import React, { useRef } from 'react'
+import axios from 'axios';
+import React, { useRef, useState } from 'react'
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom'
 function Navbar() {
+
+  const [timeTable, setTimeTable] = useState([])
+  useState(()=>{
+    const res = axios.get('https://test.polyprep.co.in/mohammadi_api/time_table_show.php').then((data)=>{
+      console.log(data)
+      setTimeTable(data.data)
+    })
+  }, [])
+
+
+  const [holiday, setHoliday] = useState([])
+  useState(()=>{
+    const res = axios.get('https://test.polyprep.co.in/mohammadi_api/holiday_show.php').then((data)=>{
+      console.log(data)
+      setHoliday(data.data)
+    })
+  }, [])
+
   const handlePolicy = ()=>{
     // console.log("This is handlePolicy");
     toast((t) => (
@@ -62,9 +81,18 @@ function Navbar() {
                     <li><Link onClick={navBarClick}  className="dropdown-item drp-item" to="/branches">Branches Offered</Link></li>
                     <li><Link onClick={navBarClick} className="dropdown-item drp-item" to="/faculty">Faculty</Link></li>
                     <li><Link onClick={navBarClick} className="dropdown-item drp-item" to="/acal">Academic Calendar</Link></li>
-                    <li><a className="dropdown-item drp-item" href="/">Time Table</a></li>
+                    {timeTable?timeTable.map((tt) => {
+                    return (
+                    <li key={tt.t_id}><a className="dropdown-item drp-item" href={`https://test.polyprep.co.in/mohammadi_api/files/time_table/${tt.time_table_file}`} target="_blank">Time Table</a></li>
+                    );
+                    }):""}
                     <li><Link onClick={navBarClick} className="dropdown-item drp-item" to="/library">Library</Link></li>
-                    <li><a className="dropdown-item drp-item" href="/">Holiday</a></li>
+                    {holiday?holiday.map((holiday) => {
+                    return (
+                    <li key={holiday.t_id}><a className="dropdown-item drp-item" href={`https://test.polyprep.co.in/mohammadi_api/files/time_table/${holiday.time_table_file}`} target="_blank">Holiday</a></li>
+                    );
+                    }):""}
+                    {/* <li><a className="dropdown-item drp-item" href="/"></a></li> */}
                 </ul>
               </li>
               <li className="nav-item dropdown">

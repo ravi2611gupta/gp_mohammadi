@@ -6,8 +6,9 @@ function Index() {
 
   const [acal, setAcal] = useState([])
   useEffect(()=>{
-     const res = axios.get('http://localhost/mohammadi_api/acal_show.php').then((data)=>{
-       console.table(data)
+     const res = axios.get('https://test.polyprep.co.in/mohammadi_api/acal_show.php').then((data)=>{
+       console.table("Academic Calendar : ",data)
+       console.log(data)
        setAcal(data.data)
      })     
   }, [])
@@ -33,21 +34,20 @@ function Index() {
                 </thead>
                 
                 <tbody>
-                    <tr>
-                        <td>1.</td>
-                        <td><a href="" target="_blank"> Click here to view </a></td>
-                        <td>2017-2018</td>
-                    </tr>
-                    <tr>
-                        <td>2.</td>
-                        <td><a href="" target="_blank"> Click here to view </a></td>
-                        <td>2018-2019</td>
-                    </tr>
-                    <tr>
-                        <td>3.</td>
-                        <td><a href="" target="_blank"> Click here to view </a></td>
-                        <td>2019-2020</td>
-                    </tr>
+                   
+                {acal?acal.map((acal) => {
+                  return (
+                  
+                  <tr>
+                  <td>{acal.acal_id}</td>
+                  <td><a href={`https://test.polyprep.co.in/mohammadi_api/files/acal/${acal.acal_file}`} target="_blank"> Click here to view </a></td>
+                  <td>{acal.session}</td>
+                  </tr>
+                  );
+                }):""}
+                   
+                    
+                   
                 </tbody>
             </table>
           </div>

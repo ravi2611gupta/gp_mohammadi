@@ -22,7 +22,7 @@ function Index() {
 
     const saveFormData = async ()=>{
 
-        const res = await axios.post('http://localhost/mohammadi_api/contact_add.php', formData)
+        const res = await axios.post('https://test.polyprep.co.in/mohammadi_api/contact_add.php', formData)
         console.log(res)
         if(res.data.status==true){
             toast.success(res.data.message)

@@ -6,7 +6,7 @@ function Index() {
 
   const [annual, setAnnual] = useState([])
   useEffect(()=>{
-    const res = axios.get('http://localhost/mohammadi_api/annual_show.php').then((data)=>{
+    const res = axios.get('https://test.polyprep.co.in/mohammadi_api/annual_show.php').then((data)=>{
       console.log(data)
       setAnnual(data.data)
     })
@@ -21,26 +21,17 @@ function Index() {
     
 <div className="container">
     <div className="row py-4">
-      <div className="col-sm-3 mt-4">
-          <div className="card gal">
-            <a href={ require('../../img/gallery/gal1.jpeg') } data-fancybox="gallery"><img src={ require('../../img/gallery/gal1.jpeg') } alt="" className='' /></a>
-          </div>
-      </div>
-      <div className="col-sm-3 mt-4">
-        <div className="card gal">
-            <a href={ require('../../img/gallery/gal2.jpeg') } data-fancybox="gallery"><img src={ require('../../img/gallery/gal2.jpeg') } alt="" /></a>
-        </div>
-      </div>
-      <div className="col-sm-3 mt-4">
-        <div className="card gal">
-            <a href={ require('../../img/gallery/gal3.jpg') } data-fancybox="gallery"><img src={ require('../../img/gallery/gal3.jpg') } alt="" /></a>
-        </div>
-      </div>
-      <div className="col-sm-3 mt-4">
-        <div className="card gal">
-            <a href={ require('../../img/gallery/gal4.jpg') } data-fancybox="gallery"><img src={ require('../../img/gallery/gal4.jpg') } alt="" /></a>
-        </div>
-      </div>
+    
+    {annual?annual.map((annual) => {
+              return (
+              
+              <div className="col-sm-3 mt-4">
+              <div className="card gal">
+                <a href={`https://test.polyprep.co.in/mohammadi_api/files/gallery/${annual.pic}`} data-fancybox="gallery"><img src={`https://test.polyprep.co.in/mohammadi_api/files/gallery/${annual.pic}`} alt="" className='' /></a>
+              </div>
+              </div>
+              );
+              }):""}
       
     </div>
   </div>

@@ -25,7 +25,7 @@ function Index() {
     }
 
     const formSave = async ()=>{
-        const res = await axios.post('http://localhost/mohammadi_api/rag_add.php', formData)
+        const res = await axios.post('https://test.polyprep.co.in/mohammadi_api/rag_add.php', formData)
         if(res.data.status == true){
             toast.success(res.data.message)
             setFormData({

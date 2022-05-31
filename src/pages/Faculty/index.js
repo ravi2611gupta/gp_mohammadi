@@ -6,7 +6,7 @@ function Index() {
 
   const [faculty, setFaculty] = useState([])
   useEffect(()=>{
-      const res = axios.get('http://localhost/mohammadi_api/teacher_show.php').then((data)=>{
+      const res = axios.get('https://test.polyprep.co.in/mohammadi_api/teacher_show.php').then((data)=>{
       console.log(data)
       setFaculty(data.data)
     })
@@ -36,16 +36,23 @@ function Index() {
                 </thead>
                 
                 <tbody>
+                {faculty?faculty.map((fac) => {
+                  return (
+                    // <div className="item" key={gal.gal_id}><img src={`https://test.polyprep.co.in/mohammadi_api/files/gallery/${gal.pic}`} style={{height: "160px"}} /></div>
                     <tr>
-                        <td>1.</td>
-                        <th><img src={require('../../img/teaching_staff/male_avatar.jpg')} alt="Sorry Something went wrong :(" /></th>
-                        <td><strong> Teacher Name </strong></td>
-                        <td>lecturer</td>
-                        <td>Computer Science</td>
-                        <td>B. Tech</td>
-                        <td>0000000000</td>
-                        <td>xyz@gmail.com</td>
-                    </tr>
+                    <td>{fac.tech_id}</td>
+                    <th><img src={`https://test.polyprep.co.in/mohammadi_api/files/teacher/${fac.pic}`} alt="Sorry Something went wrong :(" /></th>
+                    <td><strong> {fac.name} </strong></td>
+                    <td>{fac.designation}</td>
+                    <td>{fac.dept_name}</td>
+                    <td>{fac.qualification}</td>
+                    <td>{fac.mobile}</td>
+                    <td>{fac.email}</td>
+                </tr>
+                  );
+                }):""}
+
+                   
                  
                    
                 </tbody>

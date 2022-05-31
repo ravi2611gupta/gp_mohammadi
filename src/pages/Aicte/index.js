@@ -6,7 +6,7 @@ function Index() {
 
     const [aicte, setAicte] = useState([])
     useEffect(()=>{
-        const res = axios.get('http://localhost/mohammadi_api/aicte_show.php').then((data)=>{
+        const res = axios.get('https://test.polyprep.co.in/mohammadi_api/aicte_show.php').then((data)=>{
             console.log(data)
             setAicte(data.data)
         })
@@ -32,13 +32,19 @@ function Index() {
                         </thead>
 
                         <tbody>
+                            
+                        {aicte?aicte.map((aicte) => {
+                        return (
+                        <tr>
+                        <th scope="row">{aicte.doc_id}</th>
+                        <td>{aicte.title}</td>
+                        <td><a href={`https://test.polyprep.co.in/mohammadi_api/files/aicte/${aicte.file}`} target="_blank">Click Here to View</a></td>
+                        <td>{aicte.date}</td>
+                        </tr>
+                        );
+                        }):""}
 
-                             <tr>
-                                <th scope="row">1</th>
-                                <td>demo aicte 2</td>
-                                <td><a href="#" target="_blank">Click Here to View</a></td>
-                                <td>2022-05-05</td>
-                            </tr>
+
                                                  
 
                         </tbody>

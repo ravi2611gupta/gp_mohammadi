@@ -6,7 +6,7 @@ function Index() {
 
     const [mou, setMou] = useState()
     useEffect(()=>{
-        const res = axios.get('http://localhost/mohammadi_api/mou_show.php').then((data)=>{
+        const res = axios.get('https://test.polyprep.co.in/mohammadi_api/mou_show.php').then((data)=>{
             console.log(data)
             setMou(data.data)
         })
@@ -34,14 +34,17 @@ function Index() {
                         </thead>
 
                         <tbody>
-
-                             <tr>
-                                <th scope="row">1</th>
-                                <td>mou with this company</td>
-                                <td>Company name</td>
-                                <td><a href="#" target="_blank">Click Here to View</a></td>
-                                <td>2022-05-05</td>
-                            </tr>
+                        {mou?mou.map((mou) => {
+                        return (
+                        <tr>
+                        <th scope="row">{mou.doc_id}</th>
+                        <td>{mou.title}</td>
+                        <td>{mou.company}</td>
+                        <td><a href={`https://test.polyprep.co.in/mohammadi_api/files/mou/${mou.file}`} target="_blank">Click Here to View</a></td>
+                        <td>{mou.date}</td>
+                        </tr>
+                        );
+                        }):""}
                       
                         </tbody>
                     </table>

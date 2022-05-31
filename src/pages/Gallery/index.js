@@ -6,7 +6,7 @@ function Index() {
 
   const [gallery, setGallery] = useState([])
   useEffect(()=>{
-    const res = axios.get('http://localhost/mohammadi_api/gallery_show.php').then((data)=>{
+    const res = axios.get('https://test.polyprep.co.in/mohammadi_api/gallery_show.php').then((data)=>{
       console.log(data)
       setGallery(data.data)
     })
@@ -22,26 +22,19 @@ function Index() {
     
     <div className="container">
         <div className="row py-4">
-          <div className="col-sm-3 mt-4">
+
+        {gallery?gallery.map((gal) => {
+              return (
+              
+              <div className="col-sm-3 mt-4">
               <div className="card gal">
-                <a href={ require('../../img/gallery/gal1.jpeg') } data-fancybox="gallery"><img src={ require('../../img/gallery/gal1.jpeg') } alt="" className='' /></a>
+                <a href={`https://test.polyprep.co.in/mohammadi_api/files/gallery/${gal.pic}`} data-fancybox="gallery"><img src={`https://test.polyprep.co.in/mohammadi_api/files/gallery/${gal.pic}`} alt="" className='' /></a>
               </div>
-          </div>
-          <div className="col-sm-3 mt-4">
-            <div className="card gal">
-                <a href={ require('../../img/gallery/gal2.jpeg') } data-fancybox="gallery"><img src={ require('../../img/gallery/gal2.jpeg') } alt="" /></a>
-            </div>
-          </div>
-          <div className="col-sm-3 mt-4">
-            <div className="card gal">
-                <a href={ require('../../img/gallery/gal3.jpg') } data-fancybox="gallery"><img src={ require('../../img/gallery/gal3.jpg') } alt="" /></a>
-            </div>
-          </div>
-          <div className="col-sm-3 mt-4">
-            <div className="card gal">
-                <a href={ require('../../img/gallery/gal4.jpg') } data-fancybox="gallery"><img src={ require('../../img/gallery/gal4.jpg') } alt="" /></a>
-            </div>
-          </div>
+              </div>
+              );
+              }):""}
+                 
+         
           
         </div>
       </div>
