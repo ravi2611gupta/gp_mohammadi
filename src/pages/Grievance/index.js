@@ -26,20 +26,29 @@ function Index() {
    }
 
    const saveForm = async ()=>{
-    
-     console.log("Calling Serve Post ")
-     const res = await  axios.post('https://test.polyprep.co.in/mohammadi_api/grievance_add.php',formData);
+    if(formData.name === "" || formData.enroll === "" || formData.mob === "" || formData.email === "" || formData.sub === "" || formData.msg === ""){
+      toast.error("All fields are required")
+    }
+    else{
+      try{
+        console.log("Calling Serve Post ")
+        const res = await  axios.post('https://test.polyprep.co.in/mohammadi_api/grievance_add.php',formData);
 
-  console.log("response",res)
-    toast.success(res.data.message)
-    setFormData({
-      name:'',
-      enroll:'',
-      mob:'',
-      email:'',
-      sub:'',
-      msg:''
-    })
+      console.log("response",res)
+        toast.success(res.data.message)
+        setFormData({
+          name:'',
+          enroll:'',
+          mob:'',
+          email:'',
+          sub:'',
+          msg:''
+        })
+      }
+      catch(error){
+        console.log(error)
+      }
+    }
    }
 
 
@@ -99,7 +108,7 @@ function Index() {
 
                <div className="row">
                  <div className="col-sm-12 py-2">
-                   <input type="submit"  className="btn border-0 rounded-0 text-light px-5 linear-bg"/>
+                   <input type="submit" className="btn border-0 rounded-0 text-light px-5 linear-bg"/>
                  </div>
                </div>
              </div>

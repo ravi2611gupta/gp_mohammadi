@@ -22,23 +22,34 @@ function Index() {
 
     const saveFormData = async ()=>{
 
-        const res = await axios.post('https://test.polyprep.co.in/mohammadi_api/contact_add.php', formData)
-        console.log(res)
-        if(res.data.status==true){
-            toast.success(res.data.message)
-            setFormData(
-                {
-                    fname:'',
-                    lname:'',
-                    mobile:'',
-                    email:'',
-                    message:''
-                }
-            )
 
-        }else{
-            toast.error(res.data.message)
-        }
+        if(formData.fname === "" || formData.lname === "" || formData.mobile === "" || formData.email === "" || formData.message === ""){
+            toast.error("All fields are required")
+          }
+          else{
+            try{
+                const res = await axios.post('https://test.polyprep.co.in/mohammadi_api/contact_add.php', formData)
+                console.log(res)
+                if(res.data.status==true){
+                    toast.success(res.data.message)
+                    setFormData(
+                        {
+                            fname:'',
+                            lname:'',
+                            mobile:'',
+                            email:'',
+                            message:''
+                        }
+                    )
+        
+                }else{
+                    toast.error(res.data.message)
+                }
+            }
+            catch(error){
+              console.log(error)
+            }
+          }
         
     }
 
@@ -94,7 +105,7 @@ function Index() {
                     </div>
                 </div>
                 <div className="row pt-3">
-                    <div className="col-sm-12 text-center"><input type="submit" value="Submit" onClick={()=>{handleOnSubmit()}} className="btn btn-info px-5 my-btn1" /></div>
+                    <div className="col-sm-12 text-center"><input type="submit" value="Submit" onClick={handleOnSubmit} className="btn btn-info px-5 my-btn1" /></div>
                 </div>
             </form>
           </div>

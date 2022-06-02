@@ -25,25 +25,38 @@ function Index() {
     }
 
     const formSave = async ()=>{
-        const res = await axios.post('https://test.polyprep.co.in/mohammadi_api/rag_add.php', formData)
-        if(res.data.status == true){
-            toast.success(res.data.message)
-            setFormData({
-                name:'',
-                enroll:'',
-                mob:'',
-                email:'',
-                gname:'',
-                gmob:'',
-                branch:'',
-                year:'',
-                gen:'',
-                add:'',
-                msg:''  
-            })
-        }else{
-            toast.error(res.data.message)
-        }
+        
+        if(formData.name === "" || formData.enroll === "" || formData.mob === "" || formData.email === "" || formData.gname === "" || formData.gmob === "" || formData.branch === "" || formData.year === "" || formData.gen === "" || formData.add === "" || formData.msg === ""){
+            toast.error("All fields are required")
+          }
+          else{
+            try{
+                const res = await axios.post('https://test.polyprep.co.in/mohammadi_api/rag_add.php', formData)
+                if(res.data.status == true){
+                    toast.success(res.data.message)
+                    setFormData({
+                        name:'',
+                        enroll:'',
+                        mob:'',
+                        email:'',
+                        gname:'',
+                        gmob:'',
+                        branch:'',
+                        year:'',
+                        gen:'',
+                        add:'',
+                        msg:''  
+                    })
+                }else{
+                    toast.error(res.data.message)
+                }
+            }
+            catch(error){
+              console.log(error)
+            }
+          }
+
+      
     }
 
 
@@ -176,7 +189,7 @@ function Index() {
 
                             <div className="row">
                                 <div className="col-sm-12 py-2">
-                                    <input type="button" value="Submit" onClick={()=>{ handleFormSubmit() }} className="btn border-0 rounded-0 text-light px-5 linear-bg"/>
+                                    <input type="submit" value="Submit" onClick={handleFormSubmit} className="btn border-0 rounded-0 text-light px-5 linear-bg"/>
                                 </div>
                             </div>
                         </div>

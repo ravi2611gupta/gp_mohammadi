@@ -44,6 +44,12 @@ function Index() {
 
    const formSave = async () => {
 
+
+    if(formData.name === "" || formData.enroll === "" || formData.mob === "" || formData.email === "" || formData.fname === "" || formData.branch === "" || formData.marks === "" || formData.py === "" || formData.wp === "" || formData.pic === "" || formData.cv === "" || formData.dg === "" || formData.au === "" || formData.fb === ""){
+      toast.error("All fields are required")
+    }
+    else{
+      
 //     const formData = new FormData();
 
 //     formData.append("avatar", selectedFile);
@@ -82,6 +88,8 @@ function Index() {
             }
 
     // console.log(res);
+    }
+
   
   };
 
@@ -382,7 +390,7 @@ function Index() {
                 <div className="row">
                   <div className="col-sm-12 py-2">
                     <input
-                      type="button"
+                      type="submit"
                       value="Submit"
                       onClick={handleFormSummit}
                       className="btn border-0 rounded-0 text-light px-5 linear-bg"

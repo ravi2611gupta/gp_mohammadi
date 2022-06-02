@@ -73,8 +73,8 @@ function Index() {
   
   const [slider, setSlider] = useState([])
   useEffect(()=>{
-  const res = axios.get('https://test.polyprep.co.in/mohammadi_api/slider_show.php').then((data)=>{
-    console.log(data)
+  const res = axios.get('http://localhost/mohammadi_api/slider_show.php').then((data)=>{
+    console.log("slider response : ",data)
     setSlider(data.data)
   })
   },[])
@@ -107,6 +107,7 @@ function Index() {
   }, [])
 
 
+  let flag = 1;
   return (
    
     <>
@@ -119,20 +120,31 @@ function Index() {
               {/* <button type="button" data-bs-target="#my-slider" data-bs-slide-to="2" aria-label="Slide 3"></button> */}
             </div>
             <div className="carousel-inner">
-              <div className="carousel-item active my-slide" data-bs-interval="2000">
-                <img src={slide1} className="d-block w-100" alt="..."/>
-                <div className="slider-text">
-                  <h3>Government Polytechnic, Mohammadi Kheri</h3>
-                  <h6>Affiliated to : Uttar Pradesh Board of Technical Education</h6>
+
+            {slider?slider.map((slider) => {
+              if(flag==1){
+                return (
+                  <div className="carousel-item active my-slide" data-bs-interval="2000">
+                  <img src={`http://localhost/mohammadi_api/files/slider/${slider.pic}`} className="d-block w-100" alt="..."/>
+                  <div className="slider-text">
+                    <h3>Government Polytechnic, Mohammadi Kheri</h3>
+                    <h6>Affiliated to : Uttar Pradesh Board of Technical Education</h6>
+                  </div>
                 </div>
-              </div>
-              <div className="carousel-item my-slide" data-bs-interval="2000">
-                <img src={slide2} className="d-block w-100" alt="..."/>
+                )
+              }else{
+                <div className="carousel-item my-slide" data-bs-interval="2000">
+                <img src={`http://localhost/mohammadi_api/files/slider/${slider.pic}`} className="d-block w-100" alt="..."/>
                 <div className="slider-text">
                   <h3>College labs</h3>
                   <h6>Students get practical knowledge form the labs.</h6>
                 </div>
               </div>
+              }
+              flag = 0;
+              
+                }):"Sorry, no data found!"}
+
              
             </div>
             <button className="carousel-control-prev" type="button" data-bs-target="#my-slider" data-bs-slide="prev">
