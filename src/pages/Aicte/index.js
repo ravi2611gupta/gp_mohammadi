@@ -33,10 +33,10 @@ function Index() {
 
                         <tbody>
                             
-                        {aicte?aicte.map((aicte) => {
+                        {aicte?aicte.map((aicte, idx) => {
                         return (
                         <tr>
-                        <th scope="row">{aicte.doc_id}</th>
+                        <th scope="row">{idx+1}</th>
                         <td>{aicte.title}</td>
                         <td><a href={`https://test.polyprep.co.in/mohammadi_api/files/aicte/${aicte.file}`} target="_blank">Click Here to View</a></td>
                         <td>{aicte.date}</td>

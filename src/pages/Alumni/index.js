@@ -38,12 +38,12 @@ function Index() {
                         </thead>
 
                         <tbody>
-                        {alumni?alumni.map((alumni) => {
+                        {alumni?alumni.map((alumni, idx) => {
                         return (
                         
 
                         <tr>
-                        <td>{alumni.id}</td>
+                        <td>{idx+1}</td>
                         <th><img src={`https://test.polyprep.co.in/mohammadi_api/files/alumni_pic/${alumni.pic}`} alt="Sorry Something went wrong :(" /></th>
                         <td><strong> {alumni.name} </strong></td>
                         <td>{alumni.designation}</td>

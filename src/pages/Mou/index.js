@@ -34,10 +34,10 @@ function Index() {
                         </thead>
 
                         <tbody>
-                        {mou?mou.map((mou) => {
+                        {mou?mou.map((mou, idx) => {
                         return (
                         <tr>
-                        <th scope="row">{mou.doc_id}</th>
+                        <th scope="row">{idx+1}</th>
                         <td>{mou.title}</td>
                         <td>{mou.company}</td>
                         <td><a href={`https://test.polyprep.co.in/mohammadi_api/files/mou/${mou.file}`} target="_blank">Click Here to View</a></td>

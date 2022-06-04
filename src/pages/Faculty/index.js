@@ -36,11 +36,11 @@ function Index() {
                 </thead>
                 
                 <tbody>
-                {faculty?faculty.map((fac) => {
+                {faculty?faculty.map((fac,idx) => {
                   return (
                     // <div className="item" key={gal.gal_id}><img src={`https://test.polyprep.co.in/mohammadi_api/files/gallery/${gal.pic}`} style={{height: "160px"}} /></div>
                     <tr>
-                    <td>{fac.tech_id}</td>
+                    <td>{idx+1}</td>
                     <th><img src={`https://test.polyprep.co.in/mohammadi_api/files/teacher/${fac.pic}`} alt="Sorry Something went wrong :(" /></th>
                     <td><strong> {fac.name} </strong></td>
                     <td>{fac.designation}</td>

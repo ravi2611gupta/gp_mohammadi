@@ -59,10 +59,10 @@ function Index() {
                         <tbody>
 
                                                      
-                            {videos.map((video)=>{
+                            {videos.map((video, idx)=>{
                                 return(
                                     <tr key={video.v_id}>
-                                    <td>{video.v_id}</td>
+                                    <td>{idx+1}</td>
                                     <td>{video.title} </td>
                                     <td>{video.branch}</td>
                                     <td>{video.year}</td>

@@ -35,11 +35,11 @@ function Index() {
                 
                 <tbody>
                    
-                {acal?acal.map((acal) => {
+                {acal?acal.map((acal, idx) => {
                   return (
                   
                   <tr>
-                  <td>{acal.acal_id}</td>
+                  <td>{idx+1}</td>
                   <td><a href={`https://test.polyprep.co.in/mohammadi_api/files/acal/${acal.acal_file}`} target="_blank"> Click here to view </a></td>
                   <td>{acal.session}</td>
                   </tr>

@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import slide1 from '../../img/slider/slider1.jpg'
-import slide2 from '../../img/slider/slider2.jpg'
-
 
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
@@ -115,35 +112,28 @@ function Index() {
         <div className="col-sm-9 p-0">
           <div id="my-slider" className="carousel slide" data-bs-ride="carousel">
             <div className="carousel-indicators">
-              <button type="button" data-bs-target="#my-slider" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#my-slider" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              {/* <button type="button" data-bs-target="#my-slider" data-bs-slide-to="2" aria-label="Slide 3"></button> */}
+            {slider.map((slider,idx,arr)=>{
+                return(
+                  <button type="button" data-bs-target="#my-slider" data-bs-slide-to={`${idx}`} className={(!idx)? "active" : ""} aria-current={(!idx)? "true" : ""}  aria-label={`Slide ${idx + 1}`}></button>
+                  )
+                })}
+                {/* <button type="button" data-bs-target="#my-slider" data-bs-slide-to="1" aria-label="Slide 2"></button> */}
+
+            
             </div>
             <div className="carousel-inner">
 
-            {slider?slider.map((slider) => {
-              if(flag==1){
-                return (
-                  <div className="carousel-item active my-slide" data-bs-interval="2000">
+              {slider.map((slider,idx,arr)=>{
+                return(
+                  <div className={(!idx)? "carousel-item my-slide active" : "carousel-item my-slide"} data-bs-interval="2000">
                   <img src={`http://localhost/mohammadi_api/files/slider/${slider.pic}`} className="d-block w-100" alt="..."/>
-                  <div className="slider-text">
-                    <h3>Government Polytechnic, Mohammadi Kheri</h3>
-                    <h6>Affiliated to : Uttar Pradesh Board of Technical Education</h6>
+                  <div className="slider-text" >
+                    <h3>{slider.text1}</h3>
+                    <h6>{slider.text2}</h6>
                   </div>
-                </div>
+                  </div>
                 )
-              }else{
-                <div className="carousel-item my-slide" data-bs-interval="2000">
-                <img src={`http://localhost/mohammadi_api/files/slider/${slider.pic}`} className="d-block w-100" alt="..."/>
-                <div className="slider-text">
-                  <h3>College labs</h3>
-                  <h6>Students get practical knowledge form the labs.</h6>
-                </div>
-              </div>
-              }
-              flag = 0;
-              
-                }):"Sorry, no data found!"}
+              })}
 
              
             </div>
@@ -619,7 +609,7 @@ function Index() {
                               <div className="text-area">
                                 <p className="my-para">I had a very good time at GP Mohammadi. All the teachers are very friendly and enthusiastic. The lessons are very varied and inspiring. Thank you very much!!!</p>
                                 <h5>Shiva Gupta</h5>
-                                <h5>B.Sc.</h5>
+                                <h5>Computer Science and Engineering</h5>
                               </div>      
                             </div>
                             <div className="col-sm-3">
@@ -641,7 +631,7 @@ function Index() {
                               <div className="text-area">
                                 <p className="my-para">Helpful and ample material, motivated and inspirational faculty. <br/>Thank you.</p>
                                 <h5>Shivani Gupta</h5>
-                                <h5>B.A.</h5>
+                                <h5>Civil Engineering</h5>
                               </div>
                             </div>
                             <div className="col-sm-3">
@@ -662,7 +652,7 @@ function Index() {
                               <div className="text-area">
                                 <p className="my-para">It was a unique and great experience. Everybody here is so kind and nice. <br/>Thanks a billion for Daudnagar college faculty.</p>
                                 <h5>Shivam Gupta</h5>
-                                <h5>B.Sc.</h5>
+                                <h5>Electrical Engineering</h5>
                               </div>
                             </div>
                             <div className="col-sm-3">
@@ -704,7 +694,7 @@ function Index() {
                   <div className="col-md-12">
                     <div className="card-body">
                       <h6 className="card-title">ELECTRICAL ENGINEERING</h6>
-                      <p className="card-text text-center">In Three Year Diploma COURSES, the institute is offers Electrical Engineering.</p>
+                      <p className="card-text text-center">In the three year diploma course, the institute offers Electrical Engineering.</p>
                     </div>
                   </div>
                 </div>
@@ -720,7 +710,7 @@ function Index() {
                   <div className="col-md-12">
                     <div className="card-body">
                       <h6 className="card-title">COMPUTER SCIENCE &amp; ENGINEERING</h6>
-                      <p className="card-text text-center">In Three Year Diploma COURSES, the institute is offers Computer Science &amp; Engineering.</p>
+                      <p className="card-text text-center">In the three year diploma course, the institute offers Computer Science &amp; Engineering.</p>
                     </div>
                   </div>
                 </div>
@@ -736,7 +726,7 @@ function Index() {
                   <div className="col-md-12">
                     <div className="card-body">
                       <h6 className="card-title">CIVIL ENGINEERING</h6>
-                      <p className="card-text text-center">In Three Year Diploma COURSES, the institute is offers Civil Engineering.</p>
+                      <p className="card-text text-center">In the three year diploma course, the institute is offers Civil Engineering.</p>
                     </div>
                   </div>
                 </div>

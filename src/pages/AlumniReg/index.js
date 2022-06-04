@@ -303,7 +303,7 @@ function Index() {
                 <div className="row">
                   <div className="col-sm-6 py-2">
                     <label className="form-label" htmlFor="pic">
-                      Uploaded Your Pic :{" "}
+                      Upload Your Pic :{" "}
                     </label>
                     <input
                       type="file"
