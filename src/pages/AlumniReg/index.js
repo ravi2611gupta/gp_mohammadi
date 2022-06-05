@@ -37,7 +37,6 @@ function Index() {
 
   const handleFormSummit = (e) => {
     // console.log("submitted");
-
     e.preventDefault();
     formSave();
   };
@@ -82,6 +81,26 @@ function Index() {
       
               console.log(res)
               toast.success(res.data.message)
+              setFormData(
+                {
+                  name: "",
+                  enroll: "",
+                  mob: "",
+                  email: "",
+                  fname: "",
+                  branch: "",
+                  marks: "",
+                  py: "",
+                  wp: "",
+                  pic: "",
+                  cv: "",
+                  dg: "",
+                  au: "",
+                  fb: "",
+                }
+              )
+
+              document.getElementById("my-form").reset();
           
             } catch (error) {
               console.log(error);
@@ -100,7 +119,7 @@ function Index() {
       <div className="container">
         <div className="row py-4">
           <div className="col-sm-12 p-3 my-form">
-            <form className="form">
+            <form className="form" id="my-form">
               <div className="container">
                 <div className="row">
                   <div className="col-sm-6 py-2">
@@ -212,11 +231,11 @@ function Index() {
                       <option value="" selected="" disabled="">
                         Select Your Branch
                       </option>
-                      <option value="Mechanical Engineering (Automobile)">
-                        Mechanical Engineering (Automobile)
+                      <option value="Civil Engineering">
+                      Civil Engineering
                       </option>
-                      <option value="Mechanical Engineering (Production)">
-                        Mechanical Engineering (Production)
+                      <option value="Electrical Engineering">
+                        Electrical Engineering
                       </option>
                       <option value="Computer Science and Engineering">
                         Computer Science and Engineering

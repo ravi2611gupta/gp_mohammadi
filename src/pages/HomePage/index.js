@@ -70,7 +70,7 @@ function Index() {
   
   const [slider, setSlider] = useState([])
   useEffect(()=>{
-  const res = axios.get('http://localhost/mohammadi_api/slider_show.php').then((data)=>{
+  const res = axios.get('https://test.polyprep.co.in/mohammadi_api/slider_show.php').then((data)=>{
     console.log("slider response : ",data)
     setSlider(data.data)
   })
@@ -126,7 +126,7 @@ function Index() {
               {slider.map((slider,idx,arr)=>{
                 return(
                   <div className={(!idx)? "carousel-item my-slide active" : "carousel-item my-slide"} data-bs-interval="2000">
-                  <img src={`http://localhost/mohammadi_api/files/slider/${slider.pic}`} className="d-block w-100" alt="..."/>
+                  <img src={`https://test.polyprep.co.in/mohammadi_api/files/slider/${slider.pic}`} className="d-block w-100" alt="..."/>
                   <div className="slider-text" >
                     <h3>{slider.text1}</h3>
                     <h6>{slider.text2}</h6>

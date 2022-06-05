@@ -31,7 +31,7 @@ function Index() {
           }
           else{
             try{
-                const res = await axios.post('https://test.polyprep.co.in/mohammadi_api/rag_add.php', formData)
+                const res = await axios.post('http://localhost/mohammadi_api/rag_add.php', formData)
                 if(res.data.status == true){
                     toast.success(res.data.message)
                     setFormData({
@@ -118,10 +118,8 @@ function Index() {
                                     <label className="form-label" htmlFor="branch">Branch Name : </label>
                                     <select name="branch" id="branch" value={formData.branch} onChange={ (e)=>{ setFormData({...formData, branch:e.target.value}) } } className="form-control">
                                         <option value="" selected disabled>Select Your Branch</option>
-                                        <option value="Mechanical Engineering (Automobile)">Mechanical Engineering
-                                            (Automobile)</option>
-                                        <option value="Mechanical Engineering (Production)">Mechanical Engineering
-                                            (Production)</option>
+                                        <option value="Civil Engineering">Civil Engineering</option>
+                                        <option value="Electrical Engineering">Electrical Engineering</option>
                                         <option value="Computer Science and Engineering">Computer Science and
                                             Engineering</option>
                                     </select>

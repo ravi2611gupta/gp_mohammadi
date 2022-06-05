@@ -18,11 +18,8 @@ function Index() {
      console.log('Form Submitted')
      console.log(formData)
 
-     if(formData.name !== ''){
       saveForm();
 
-     }
-   
    }
 
    const saveForm = async ()=>{
@@ -32,7 +29,7 @@ function Index() {
     else{
       try{
         console.log("Calling Serve Post ")
-        const res = await  axios.post('https://test.polyprep.co.in/mohammadi_api/grievance_add.php',formData);
+        const res = await axios.post('https://test.polyprep.co.in/mohammadi_api/grievance_add.php',formData);
 
       console.log("response",res)
         toast.success(res.data.message)
@@ -65,7 +62,7 @@ function Index() {
           <div className="col-sm-12 p-3 my-form">
 
 
-           <form action="" className="form" onSubmit={handleFormSubmit}>
+           <form action="" className="form">
              <div className="container">
                <div className="row">
                  <div className="col-sm-6 py-2"> 
@@ -108,7 +105,7 @@ function Index() {
 
                <div className="row">
                  <div className="col-sm-12 py-2">
-                   <input type="submit" className="btn border-0 rounded-0 text-light px-5 linear-bg"/>
+                   <input type="submit" onClick={handleFormSubmit} className="btn border-0 rounded-0 text-light px-5 linear-bg"/>
                  </div>
                </div>
              </div>
