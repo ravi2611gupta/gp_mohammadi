@@ -1,14 +1,19 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import Breadcrumb from '../../components/Breadcrumb'
+import Loader from '../../components/Loader';
 
 function Index() {
 
+  const [spinner, setSpinner] = useState(false);
+
   const [seminar, setSeminar] = useState([])
   useState(()=>{
+    setSpinner(true);
     const res = axios.get('https://test.polyprep.co.in/mohammadi_api/seminar_show.php').then((data)=>{
       console.log(data)
       setSeminar(data.data)
+      setSpinner(false);
     })
   }, [])
 
@@ -22,9 +27,7 @@ function Index() {
 
     
 <div className="container">
-    <div className="row py-4">
-    
-     
+    {!spinner?<div className="row py-4">
     {seminar?seminar.map((seminar) => {
         return (
         
@@ -34,9 +37,8 @@ function Index() {
         </div>
         </div>
         );
-        }):""}  
-      
-    </div>
+        }):""}   
+    </div>:<div className='row'><div className='col-sm-12 py-5'><Loader/></div></div>}
   </div>
 
 

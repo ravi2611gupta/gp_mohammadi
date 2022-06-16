@@ -1,14 +1,19 @@
 import React,{useEffect,useState} from 'react'
 import Breadcrumb from '../../components/Breadcrumb'
 import axios from 'axios'
+import Loader from '../../components/Loader';
 
 function Index() {
+  
+    const [spinner, setSpinner] = useState(false);
+
     const [videos,setVideos] = useState([]);
     useEffect(()=>{
-    const res = axios.get('https://test.polyprep.co.in/mohammadi_api/video_show.php').then((data)=>{
+        setSpinner(true);
+    const res = axios.get('http://localhost/mohammadi_api/video_show.php').then((data)=>{
             setVideos(data.data)
+            setSpinner(false);
         });
-
     },[])
 
   return (
@@ -56,9 +61,7 @@ function Index() {
                             </tr>
                         </thead>
 
-                        <tbody>
-
-                                                     
+                        {!spinner?<tbody>                           
                             {videos.map((video, idx)=>{
                                 return(
                                     <tr key={video.v_id}>
@@ -71,9 +74,7 @@ function Index() {
                                 </tr>
                                 )
                             })}
-                            
-
-                        </tbody>
+                        </tbody>:<tr><td colSpan={6}><Loader/></td></tr>}
                     </table>
                 </div>
             </div>

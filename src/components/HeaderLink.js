@@ -8,7 +8,7 @@ function HeaderLink() {
       Call Us: <a href="tel:0000000000">&nbsp; +91 00000 00000</a>
       <a href="#" className="btn c-btn" target="_blank"><i className="fas fa-headphones-alt"></i> ONLINE ADMISSION & ENQUIRY</a>
       <a href="#" className="btn c-btn" target="_blank"><i className="far fa-user"></i> GRIEVANCE REDRESSAL</a>
-      <a href="admin/" className="btn c-btn"><i className="fas fa-user-shield"></i> ADMIN LOGIN</a>
+      <a href="https://test.polyprep.co.in/mohammadi_api/admin" target="_blank" className="btn c-btn"><i className="fas fa-user-shield"></i> ADMIN LOGIN</a>
     </div>
     
     <div className="col-sm-3 headline_social">

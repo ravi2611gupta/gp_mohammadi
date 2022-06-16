@@ -1,15 +1,19 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Breadcrumb from '../../components/Breadcrumb'
+import Loader from '../../components/Loader';
 
 function Index() {
 
- 
+  const [spinner, setSpinner] = useState(false);
+
   const [sport, setSport] = useState([])
   useEffect(()=>{
+    setSpinner(true);
     const res = axios.get('https://test.polyprep.co.in/mohammadi_api/sports_show.php').then((data)=>{
       console.log(data)
       setSport(data.data)
+      setSpinner(false);
     })
   }, [])
 
@@ -21,7 +25,7 @@ function Index() {
 
     
     <div className="container">
-        <div className="row py-4">
+       {!spinner?<div className="row py-4">
         {sport?sport.map((sport) => {
               return (
               
@@ -32,7 +36,7 @@ function Index() {
               </div>
               );
               }):""}  
-        </div>
+        </div>:<div className='row'><div className='col-sm-12 py-5'><Loader/></div></div>}
       </div>
 
   

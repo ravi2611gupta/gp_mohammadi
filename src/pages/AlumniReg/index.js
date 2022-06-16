@@ -4,6 +4,9 @@ import toast from "react-hot-toast";
 import Breadcrumb from "../../components/Breadcrumb";
 
 function Index() {
+ 
+  const [loading, setLoading] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     enroll: "",
@@ -38,6 +41,7 @@ function Index() {
   const handleFormSummit = (e) => {
     // console.log("submitted");
     e.preventDefault();
+    setLoading(true);
     formSave();
   };
 
@@ -45,6 +49,7 @@ function Index() {
 
 
     if(formData.name === "" || formData.enroll === "" || formData.mob === "" || formData.email === "" || formData.fname === "" || formData.branch === "" || formData.marks === "" || formData.py === "" || formData.wp === "" || formData.pic === "" || formData.cv === "" || formData.dg === "" || formData.au === "" || formData.fb === ""){
+      setLoading(false);
       toast.error("All fields are required")
     }
     else{
@@ -67,7 +72,7 @@ function Index() {
 //     } catch (error) {
 //       console.log(error);
 //     }
-
+      
     console.log(formData)
     // const res = await axios.post('https://test.polyprep.co.in/mohammadi_api/alumni_add.php', formData)
 
@@ -79,6 +84,7 @@ function Index() {
               headers: { "Content-Type": "multipart/form-data",},
               });
       
+              setLoading(false);
               console.log(res)
               toast.success(res.data.message)
               setFormData(
@@ -103,6 +109,7 @@ function Index() {
               document.getElementById("my-form").reset();
           
             } catch (error) {
+              setLoading(false);
               console.log(error);
             }
 
@@ -410,7 +417,8 @@ function Index() {
                   <div className="col-sm-12 py-2">
                     <input
                       type="submit"
-                      value="Submit"
+                      value={loading?"Loading...":"Submit"} 
+                      disabled={loading}
                       onClick={handleFormSummit}
                       className="btn border-0 rounded-0 text-light px-5 linear-bg"
                     />

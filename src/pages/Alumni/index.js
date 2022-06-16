@@ -1,14 +1,19 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Breadcrumb from '../../components/Breadcrumb'
+import Loader from '../../components/Loader';
 
 function Index() {
 
+    const [spinner, setSpinner] = useState(false);
+
     const [alumni, setAlumni] = useState([])
     useEffect(()=>{
+        setSpinner(true);
         const res = axios.get('https://test.polyprep.co.in/mohammadi_api/alumni_show.php').then((data)=>{
             console.log(data)
             setAlumni(data.data)
+            setSpinner(false);
         })
     }, [])
 
@@ -37,11 +42,9 @@ function Index() {
                             </tr>
                         </thead>
 
-                        <tbody>
+                        {!spinner?<tbody>
                         {alumni?alumni.map((alumni, idx) => {
                         return (
-                        
-
                         <tr>
                         <td>{idx+1}</td>
                         <th><img src={`https://test.polyprep.co.in/mohammadi_api/files/alumni_pic/${alumni.pic}`} alt="Sorry Something went wrong :(" /></th>
@@ -54,10 +57,7 @@ function Index() {
                         </tr>
                         );
                         }):""}
-
-                            
-
-                        </tbody>
+                        </tbody>:<tr><td colSpan={8}><Loader/></td></tr>}
                     </table>
                 </div>
             </div>

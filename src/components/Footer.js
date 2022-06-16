@@ -1,4 +1,7 @@
+import axios from 'axios';
 import React from 'react'
+import { useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo2 from '../img/logo/logo-gpm.png'
 
@@ -9,6 +12,16 @@ function Footer() {
         border: "0.1em dashed #fff"
       };
 
+      
+  const [result, setResult] = useState([])
+  useEffect(()=>{
+    const res = axios.get('http://localhost/mohammadi_api/result_show.php').then((data)=>{
+      console.log(data);
+      setResult(data.data);
+    })
+  }, [])
+
+
   return (
     <>
     <div className="row">
@@ -17,19 +30,25 @@ function Footer() {
       <div className="row">
        
        <div className="col-sm-3 px-5 pt-5 footer-add">
-        <img src={logo2} alt="" className="rounded rounded-circle"/>
+        {/* <img src={logo2} alt="" className="rounded rounded-circle"/> */}
          <p className="my-para">Government Polytechnic<br/>
          Mohammadi Kheri</p>
-       </div>
-      
-      
-       <div className="col-sm-3  pt-5">
-         <h4 className="pb-3">Contact Us</h4>
          <ul>
            <li><i className="fas fa-mobile-alt"></i> &nbsp; +91 00000 00000</li>
            <li><i className="fas fa-envelope"></i> &nbsp; info@gpmohammdi.com</li>
            <li><i className="fas fa-map"></i> &nbsp;  Dilawarpur, Uttar Pradesh 262804</li>
          </ul>
+       </div>
+      
+      
+       <div className="col-sm-3  pt-5">
+         <h4 className="pb-3">Useful Links</h4>
+         <ul>
+           <li><a href="https://swayam.gov.in/" target="_blank"><i className="fas fa-external-link-alt"></i> &nbsp; SWAYAM</a></li>
+           <li><a href="https://nptel.ac.in/" target="_blank"><i className="fas fa-external-link-alt"></i> &nbsp; NPTEL</a></li>
+           <li><a href="https://www.mooc.org/" target="_blank"><i className="fas fa-external-link-alt"></i> &nbsp; MOOCs</a></li>
+           <li><a href="https://www.nitttrc.ac.in/" target="_blank"><i className="fas fa-external-link-alt"></i> &nbsp; NITTTR</a></li>
+          </ul>
        </div>
 
        <div className="col-sm-3 pt-5">
@@ -38,7 +57,11 @@ function Footer() {
            <li><a href="https://urise.up.gov.in/" target="_blank"><i className="fas fa-external-link-alt"></i> &nbsp; URISE</a></li>
            <li><a href="https://bteup.ac.in/webapp/defaultnew.aspx" target="_blank"><i className="fas fa-external-link-alt"></i> &nbsp; BTEUP</a></li>
            <li><a href="https://jeecup.admissions.nic.in/" target="_blank"><i className="fas fa-external-link-alt"></i> &nbsp; JEECUP</a></li>
-           <li><a href="#" target="_blank"><i className="fas fa-external-link-alt"></i> &nbsp;  Exam Result</a></li>
+           {result?result.map((res)=>{
+                    return(
+                      <li><a href={`${res.link}`} target="_blank"><i className="fas fa-external-link-alt"></i> &nbsp;  Exam Result</a></li>
+                    );
+                  }):""}
            <li><a href="https://urise.up.gov.in/student/login" target="_blank"><i className="fas fa-external-link-alt"></i> &nbsp; Student Login</a></li>
          </ul>
        </div>

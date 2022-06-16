@@ -1,12 +1,13 @@
 import axios from 'axios';
 import React, { useRef, useState } from 'react'
+import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom'
 function Navbar() {
 
   const [timeTable, setTimeTable] = useState([])
-  useState(()=>{
-    const res = axios.get('https://test.polyprep.co.in/mohammadi_api/time_table_show.php').then((data)=>{
+  useEffect(()=>{
+    const res = axios.get('http://localhost/mohammadi_api/time_table_show.php').then((data)=>{
       console.log(data)
       setTimeTable(data.data)
     })
@@ -14,12 +15,22 @@ function Navbar() {
 
 
   const [holiday, setHoliday] = useState([])
-  useState(()=>{
-    const res = axios.get('https://test.polyprep.co.in/mohammadi_api/holiday_show.php').then((data)=>{
+  useEffect(()=>{
+    const res = axios.get('http://localhost/mohammadi_api/holiday_show.php').then((data)=>{
       console.log(data)
       setHoliday(data.data)
     })
   }, [])
+
+
+  const [result, setResult] = useState([])
+  useEffect(()=>{
+    const res = axios.get('http://localhost/mohammadi_api/result_show.php').then((data)=>{
+      console.log(data);
+      setResult(data.data);
+    })
+  }, [])
+
 
   const handlePolicy = ()=>{
     // console.log("This is handlePolicy");
@@ -83,13 +94,13 @@ function Navbar() {
                     <li><Link onClick={navBarClick} className="dropdown-item drp-item" to="/acal">Academic Calendar</Link></li>
                     {timeTable?timeTable.map((tt) => {
                     return (
-                    <li key={tt.t_id}><a className="dropdown-item drp-item" href={`https://test.polyprep.co.in/mohammadi_api/files/time_table/${tt.time_table_file}`} target="_blank">Time Table</a></li>
+                    <li key={tt.t_id}><a className="dropdown-item drp-item" href={`http://localhost/mohammadi_api/files/time_table/${tt.time_table_file}`} target="_blank">Time Table</a></li>
                     );
                     }):""}
                     <li><Link onClick={navBarClick} className="dropdown-item drp-item" to="/library">Library</Link></li>
                     {holiday?holiday.map((holiday) => {
                     return (
-                    <li key={holiday.t_id}><a className="dropdown-item drp-item" href={`https://test.polyprep.co.in/mohammadi_api/files/time_table/${holiday.time_table_file}`} target="_blank">Holiday</a></li>
+                    <li key={holiday.t_id}><a className="dropdown-item drp-item" href={`http://localhost/mohammadi_api/files/time_table/${holiday.time_table_file}`} target="_blank">Holiday</a></li>
                     );
                     }):""}
                     {/* <li><a className="dropdown-item drp-item" href="/"></a></li> */}
@@ -114,7 +125,11 @@ function Navbar() {
                   <li><Link onClick={navBarClick} className="dropdown-item drp-item" to="/anti-ragging">Anti Ragging</Link></li>
                   <li><Link onClick={navBarClick} className="dropdown-item drp-item" to="/grievance">Grievance Redressal</Link></li>
                   <li><a className="dropdown-item drp-item" href="https://bteup.ac.in/webapp/SYLLABUS.aspx?type=6" target="_blank">Syllabus</a></li>
-                  <li><a className="dropdown-item drp-item" href="/">Result</a></li>
+                  {result?result.map((res)=>{
+                    return(
+                      <li><a className="dropdown-item drp-item" href={`${res.link}`} target="_blank">Result</a></li>
+                    );
+                  }):""}
                   <li><Link onClick={navBarClick} className="dropdown-item drp-item" to="/alumni">Alumni</Link></li>
                   <li><Link onClick={navBarClick} className="dropdown-item drp-item" to="/alumni-reg">Alumni Registration</Link></li>
                </ul>
@@ -136,10 +151,14 @@ function Navbar() {
                     <ul className="dropdown-menu drp-ul" aria-labelledby="navbarDropdown">
                       <li><Link onClick={navBarClick} className="dropdown-item drp-item" to="/aicte">AICTE APPROVAL</Link></li>
                       <li><Link onClick={navBarClick} className="dropdown-item drp-item" to="/mou">MOU</Link></li>
+                      <li><a onClick={navBarClick} className="dropdown-item drp-item" href="https://www.aicte-india.org/feedback/index.php" target="_blank">AICTE Feedback</a></li>
                    </ul>
                  </li>
                  <li className="nav-item px-2">
                    <Link onClick={navBarClick} className="nav-link active" aria-current="page" to="/gallery">GALLERY</Link>
+                 </li>
+                 <li className="nav-item px-2">
+                   <Link onClick={navBarClick} className="nav-link active" aria-current="page" to="/committee">COMMITTEES</Link>
                  </li>
                  <li className="nav-item px-2">
                    <Link onClick={navBarClick} className="nav-link active" aria-current="page" to="/contact">CONTACT</Link>

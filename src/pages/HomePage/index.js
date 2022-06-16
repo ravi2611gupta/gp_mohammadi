@@ -5,6 +5,7 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Loader from '../../components/Loader';
 
 const menOptions = {
   margin: 1,
@@ -67,28 +68,47 @@ const galOptions = {
 
 
 function Index() {
+
+  const [spinner, setSpinner] = useState(false);
+
   
   const [slider, setSlider] = useState([])
   useEffect(()=>{
-  const res = axios.get('https://test.polyprep.co.in/mohammadi_api/slider_show.php').then((data)=>{
+  const res = axios.get('http://localhost/mohammadi_api/slider_show.php').then((data)=>{
     console.log("slider response : ",data)
     setSlider(data.data)
   })
   },[])
 
 
-  const [noti, setNoti] = useState([])
+  const [genNoti, setGenNoti] = useState([])
   useEffect(()=>{
-    const res1 = axios.get('https://test.polyprep.co.in/mohammadi_api/noti_show.php').then((data1)=>{
+    const res1 = axios.get('http://localhost/mohammadi_api/noti_general.php').then((data1)=>{
       console.log(data1)
-      setNoti(data1.data)
+      setGenNoti(data1.data)
+    })
+  }, [])
+
+  const [deptNoti, setDeptNoti] = useState([])
+  useEffect(()=>{
+    const res1 = axios.get('http://localhost/mohammadi_api/noti_department.php').then((data1)=>{
+      console.log(data1)
+      setDeptNoti(data1.data)
+    })
+  }, [])
+
+  const [examNoti, setExamNoti] = useState([])
+  useEffect(()=>{
+    const res1 = axios.get('http://localhost/mohammadi_api/noti_examination.php').then((data1)=>{
+      console.log(data1)
+      setExamNoti(data1.data)
     })
   }, [])
 
 
   const [latestNoti, setLatestNoti] = useState([])
   useEffect(()=>{
-    const res2 = axios.get('https://test.polyprep.co.in/mohammadi_api/latest_noti_show.php').then((data2)=>{
+    const res2 = axios.get('http://localhost/mohammadi_api/latest_noti_show.php').then((data2)=>{
       console.log("Latest Notices : ",data2)
       setLatestNoti(data2.data);
     })
@@ -97,9 +117,11 @@ function Index() {
   
   const [gal, setGal] = useState([])
   useEffect(()=>{
-    const res3 = axios.get('https://test.polyprep.co.in/mohammadi_api/gallery_show_all.php').then((data3)=>{
+    setSpinner(true);
+    const res3 = axios.get('http://localhost/mohammadi_api/gallery_show_all.php').then((data3)=>{
       console.log(data3)
       setGal(data3.data)
+      setSpinner(false);
     })
   }, [])
 
@@ -109,7 +131,7 @@ function Index() {
    
     <>
      <div className="row">
-        <div className="col-sm-9 p-0">
+        <div className="col-sm-12 p-0">
           <div id="my-slider" className="carousel slide" data-bs-ride="carousel">
             <div className="carousel-indicators">
             {slider.map((slider,idx,arr)=>{
@@ -126,7 +148,7 @@ function Index() {
               {slider.map((slider,idx,arr)=>{
                 return(
                   <div className={(!idx)? "carousel-item my-slide active" : "carousel-item my-slide"} data-bs-interval="2000">
-                  <img src={`https://test.polyprep.co.in/mohammadi_api/files/slider/${slider.pic}`} className="d-block w-100" alt="..."/>
+                  <img src={`http://localhost/mohammadi_api/files/slider/${slider.pic}`} className="d-block w-100" alt="..."/>
                   <div className="slider-text" >
                     <h3>{slider.text1}</h3>
                     <h6>{slider.text2}</h6>
@@ -147,23 +169,10 @@ function Index() {
             </button>
           </div>
         </div>
-
-        <div className="col-sm-3 p-2 board linear-bg-l">
-          <h5 className="board-h">Notice Board</h5>
-          <marquee behavior="scroll" direction="down" className="marquee-notice">
-                {noti?noti.map((noti) => {
-                  return (
-                    <a href={`https://test.polyprep.co.in/mohammadi_api/files/notice/${noti.file_name}`} key={noti.file_id} target="_blank" style={{display:"block"}}> <img src={require('../../img/new1.gif')}/>  {noti.notice} </a>
-                  );
-                }):"Sorry, no data found!"}
-          </marquee>
-        </div>
-
         
       </div>
 
 
-    
 
       {/* <!-- =====inportant notice start===== --> */}
       <div className="row imp-notice">
@@ -172,9 +181,9 @@ function Index() {
         </div>
         <div className="col-sm-9 imp-notice-mark">
           <marquee behavior="scroll" direction="left">
-          {latestNoti?noti.map((lnoti) => {
+          {latestNoti?latestNoti.map((lnoti) => {
                   return (
-                    <a href={`https://test.polyprep.co.in/mohammadi_api/files/notice/${lnoti.file_name}`} key={lnoti.file_id} target="_blank"> <img src={require('../../img/new1.gif')}/>  {lnoti.notice} </a>
+                    <a href={`http://localhost/mohammadi_api/files/notice/${lnoti.file_name}`} key={lnoti.file_id} target="_blank"> <img src={require('../../img/new1.gif')}/>  {lnoti.notice} </a>
                   );
                 }):"Sorry, no data found!"}
 
@@ -184,6 +193,76 @@ function Index() {
       {/* <!-- =====inportant notice end===== --> */}
 
 
+
+
+
+
+    {/* Notice Boards start */}
+    
+    <div className="container">
+        <div className="row pt-3">
+          <div className="col-sm-12 pb-3 pt-5">
+            <h3><span>Notices</span></h3>
+            <div className="underline1 linear-bg"></div>
+          </div>
+        </div>
+      </div>
+
+
+          <div className="container">
+          <div className="row">
+            <div className="col-sm-4 px-3 mt-3">  
+                  <div className="card my-card1">
+                <div className="card-body">
+                  <div className="p-2 board linear-bg-l">
+                  <h5 className="board-h">General Notice</h5>
+                  <marquee behavior="scroll" direction="down" className="marquee-notice">
+                        {genNoti?genNoti.map((genNoti) => {
+                          return (
+                            <a href={`http://localhost/mohammadi_api/files/notice/${genNoti.file_name}`} key={genNoti.file_id} target="_blank" style={{display:"block"}}> <img src={require('../../img/new1.gif')}/>  {genNoti.notice} </a>
+                          );
+                        }):"Sorry, no data found!"}
+                  </marquee>
+                </div>
+                </div>
+              </div>
+              </div>    
+            <div className="col-sm-4 px-4 mt-3">  
+                  <div className="card my-card1">
+                <div className="card-body">
+                  <div className="p-2 board linear-bg-l">
+                  <h5 className="board-h">Department Notice</h5>
+                  <marquee behavior="scroll" direction="down" className="marquee-notice">
+                        {deptNoti?deptNoti.map((deptNoti) => {
+                          return (
+                            <a href={`http://localhost/mohammadi_api/files/notice/${deptNoti.file_name}`} key={deptNoti.file_id} target="_blank" style={{display:"block"}}> <img src={require('../../img/new1.gif')}/>  {deptNoti.notice} </a>
+                          );
+                        }):"Sorry, no data found!"}
+                  </marquee>
+                </div>
+                </div>
+              </div>
+              </div>    
+            <div className="col-sm-4 px-3 mt-3">  
+                  <div className="card my-card1">
+                <div className="card-body">
+                  <div className="p-2 board linear-bg-l">
+                  <h5 className="board-h">Examination Notice</h5>
+                  <marquee behavior="scroll" direction="down" className="marquee-notice">
+                        {examNoti?examNoti.map((examNoti) => {
+                          return (
+                            <a href={`http://localhost/mohammadi_api/files/notice/${examNoti.file_name}`} key={examNoti.file_id} target="_blank" style={{display:"block"}}> <img src={require('../../img/new1.gif')}/>  {examNoti.notice} </a>
+                          );
+                        }):"Sorry, no data found!"}
+                  </marquee>
+                </div>
+                </div>
+              </div>
+              </div>    
+            </div>
+          </div>
+
+    {/* Notice Boards end */}
 
 
 
@@ -677,7 +756,7 @@ function Index() {
           <div className='col-sm-4 pb-3 pb-sm-0'>
             <div className="row">
             <div className="col-sm-12 pt-5 pb-3">
-              <h3><span>Courses</span>  Offered</h3>
+              <h3><span>Branches</span>  Offered</h3>
               <div className="underline1 linear-bg"></div>
             </div>
           </div>
@@ -762,27 +841,18 @@ function Index() {
       </div>
 
      <div className="container">
-     <div className="row pb-5">
+       {!spinner?<div className="row pb-5">
       <OwlCarousel className='owl-theme' {...galOptions}>
 
             {gal?gal.map((gal) => {
               return (
-                <div className="item" key={gal.gal_id}><img src={`https://test.polyprep.co.in/mohammadi_api/files/gallery/${gal.pic}`} style={{height: "160px"}} /></div>
+                <div className="item" key={gal.gal_id}><img src={`http://localhost/mohammadi_api/files/gallery/${gal.pic}`} style={{height: "160px"}} /></div>
               );
             }):""}
- 
-            {/* <div className="item"><img src={ require('../../img/gallery/gal2.jpeg') }  style={{height: "160px"}}/></div>
-            <div className="item"><img src={ require('../../img/gallery/gal3.jpg') }  style={{height: "160px"}}/></div>
-            <div className="item"><img src={ require('../../img/gallery/gal4.jpg') }  style={{height: "160px"}}/></div>
-            <div className="item"><img src={ require('../../img/gallery/gal2.jpeg') }  style={{height: "160px"}}/></div> */}
 
       </OwlCarousel>
 
-      
-        {/* <div className="col-sm-12 in-gall owl-carousel owl-theme">  
-        </div> */}
-        
-      </div>
+      </div>:<div className='row'><div className='col-sm-12 py-5'><Loader/></div></div>}
      </div>
       {/* <!-- =====Gallery end===== --> */}
 

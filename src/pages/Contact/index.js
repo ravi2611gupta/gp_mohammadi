@@ -5,6 +5,8 @@ import Breadcrumb from '../../components/Breadcrumb'
 
 function Index() {
 
+    const [loading, setLoading] = useState(false);
+
     const [formData, setFormData] = useState({
         fname:'',
         lname:'',
@@ -15,6 +17,7 @@ function Index() {
 
 
     const handleOnSubmit = (e)=>{
+        setLoading(true);
         console.log("submitted")
         e.preventDefault()
         saveFormData()
@@ -24,13 +27,15 @@ function Index() {
 
 
         if(formData.fname === "" || formData.lname === "" || formData.mobile === "" || formData.email === "" || formData.message === ""){
+            setLoading(false);
             toast.error("All fields are required")
           }
           else{
             try{
-                const res = await axios.post('https://test.polyprep.co.in/mohammadi_api/contact_add.php', formData)
+                const res = await axios.post('http://localhost/mohammadi_api/contact_add.php', formData)
                 console.log(res)
                 if(res.data.status==true){
+                    setLoading(false);
                     toast.success(res.data.message)
                     setFormData(
                         {
@@ -43,8 +48,10 @@ function Index() {
                     )
         
                 }else{
+                    setLoading(false);
                     toast.error(res.data.message)
                 }
+               
             }
             catch(error){
               console.log(error)
@@ -55,6 +62,7 @@ function Index() {
 
   return (
     <>
+
 
     <Breadcrumb heading="Contact Us" />
 
@@ -105,7 +113,7 @@ function Index() {
                     </div>
                 </div>
                 <div className="row pt-3">
-                    <div className="col-sm-12 text-center"><input type="submit" value="Submit" onClick={handleOnSubmit} className="btn btn-info px-5 my-btn1" /></div>
+                    <div className="col-sm-12 text-center"><input type="submit" value={loading?"Loading...":"Submit"} disabled={loading} onClick={handleOnSubmit} className="btn btn-info px-5 my-btn1" /></div>
                 </div>
             </form>
           </div>

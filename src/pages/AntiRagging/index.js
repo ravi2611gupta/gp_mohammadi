@@ -5,6 +5,9 @@ import Breadcrumb from '../../components/Breadcrumb'
 
 function Index() {
 
+    
+    const [loading, setLoading] = useState(false);
+
     const [formData, setFormData] = useState({
         name:'',
         enroll:'',
@@ -21,18 +24,21 @@ function Index() {
 
     const handleFormSubmit = (e)=>{
         e.preventDefault()
+        setLoading(true)
         formSave()
     }
 
     const formSave = async ()=>{
         
         if(formData.name === "" || formData.enroll === "" || formData.mob === "" || formData.email === "" || formData.gname === "" || formData.gmob === "" || formData.branch === "" || formData.year === "" || formData.gen === "" || formData.add === "" || formData.msg === ""){
+            setLoading(false);
             toast.error("All fields are required")
           }
           else{
             try{
                 const res = await axios.post('http://localhost/mohammadi_api/rag_add.php', formData)
                 if(res.data.status == true){
+                    setLoading(false);
                     toast.success(res.data.message)
                     setFormData({
                         name:'',
@@ -48,10 +54,12 @@ function Index() {
                         msg:''  
                     })
                 }else{
+                    setLoading(false);
                     toast.error(res.data.message)
                 }
             }
             catch(error){
+                setLoading(false);
               console.log(error)
             }
           }
@@ -187,7 +195,7 @@ function Index() {
 
                             <div className="row">
                                 <div className="col-sm-12 py-2">
-                                    <input type="submit" value="Submit" onClick={handleFormSubmit} className="btn border-0 rounded-0 text-light px-5 linear-bg"/>
+                                    <input type="submit" value={loading?"Loading...":"Submit"} disabled={loading} onClick={handleFormSubmit} className="btn border-0 rounded-0 text-light px-5 linear-bg"/>
                                 </div>
                             </div>
                         </div>

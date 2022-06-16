@@ -4,6 +4,8 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 function Index() {
 
+  const [loading, setLoading] = useState(false);
+
    const [formData,setFormData] = useState({
     name:'',
     enroll:'',
@@ -15,6 +17,7 @@ function Index() {
 
    const handleFormSubmit = (e)=>{
     e.preventDefault();
+    setLoading(true);
      console.log('Form Submitted')
      console.log(formData)
 
@@ -24,6 +27,7 @@ function Index() {
 
    const saveForm = async ()=>{
     if(formData.name === "" || formData.enroll === "" || formData.mob === "" || formData.email === "" || formData.sub === "" || formData.msg === ""){
+      setLoading(false);
       toast.error("All fields are required")
     }
     else{
@@ -32,6 +36,7 @@ function Index() {
         const res = await axios.post('https://test.polyprep.co.in/mohammadi_api/grievance_add.php',formData);
 
       console.log("response",res)
+        setLoading(false);
         toast.success(res.data.message)
         setFormData({
           name:'',
@@ -43,6 +48,7 @@ function Index() {
         })
       }
       catch(error){
+        setLoading(false);
         console.log(error)
       }
     }
@@ -105,7 +111,7 @@ function Index() {
 
                <div className="row">
                  <div className="col-sm-12 py-2">
-                   <input type="submit" onClick={handleFormSubmit} className="btn border-0 rounded-0 text-light px-5 linear-bg"/>
+                   <input type="submit" onClick={handleFormSubmit} value={loading?"Loading...":"Submit"} disabled={loading} className="btn border-0 rounded-0 text-light px-5 linear-bg"/>
                  </div>
                </div>
              </div>

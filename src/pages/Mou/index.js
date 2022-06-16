@@ -1,14 +1,19 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Breadcrumb from '../../components/Breadcrumb'
+import Loader from '../../components/Loader';
 
 function Index() {
 
+    const [spinner, setSpinner] = useState(false);
+
     const [mou, setMou] = useState()
     useEffect(()=>{
+        setSpinner(true);
         const res = axios.get('https://test.polyprep.co.in/mohammadi_api/mou_show.php').then((data)=>{
             console.log(data)
             setMou(data.data)
+            setSpinner(false);
         })
     }, [])
 
@@ -33,7 +38,7 @@ function Index() {
                             </tr>
                         </thead>
 
-                        <tbody>
+                        {!spinner?<tbody>
                         {mou?mou.map((mou, idx) => {
                         return (
                         <tr>
@@ -46,7 +51,7 @@ function Index() {
                         );
                         }):""}
                       
-                        </tbody>
+                        </tbody>:<tr><td colSpan={5}><Loader/></td></tr>}
                     </table>
                 </div>
             </div>

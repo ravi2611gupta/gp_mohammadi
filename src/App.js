@@ -17,6 +17,7 @@ import Annual from "./pages/Annual";
 import Aicte from "./pages/Aicte";
 import Mou from "./pages/Mou";
 import Gallery from "./pages/Gallery";
+import Committee from "./pages/Committee";
 import Contact from "./pages/Contact";
 
 
@@ -32,14 +33,14 @@ function App() {
 
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={
+        <Route exact path="/" element={
           <Layout>
             <Home/>
           </Layout>
         }>
         </Route>
 
-        <Route
+        <Route exact
           path="/about"
           element={
             <Layout>
@@ -49,7 +50,7 @@ function App() {
         >
         </Route>
 
-        <Route
+        <Route exact
           path="/branches"
           element={
             <Layout>
@@ -60,7 +61,7 @@ function App() {
         </Route>
        
 
-        <Route
+        <Route exact
           path="/acal"
           element={
             <Layout>
@@ -71,7 +72,7 @@ function App() {
         </Route>
        
 
-        <Route
+        <Route exact
           path="/faculty"
           element={
             <Layout>
@@ -82,7 +83,7 @@ function App() {
         </Route>
        
 
-        <Route
+        <Route exact
           path="/library"
           element={
             <Layout>
@@ -93,7 +94,7 @@ function App() {
         </Route>
 
 
-        <Route
+        <Route exact
           path="/admission"
           element={
             <Layout>
@@ -104,7 +105,7 @@ function App() {
         </Route>
 
 
-        <Route
+        <Route exact
           path="/fee"
           element={
             <Layout>
@@ -114,7 +115,7 @@ function App() {
         >
         </Route>
        
-        <Route
+        <Route exact
           path="/anti-ragging"
           element={
             <Layout>
@@ -125,7 +126,7 @@ function App() {
         </Route>
        
        
-        <Route
+        <Route exact
           path="/grievance"
           element={
             <Layout>
@@ -135,7 +136,7 @@ function App() {
         >
         </Route>    
        
-        <Route
+        <Route exact
           path="/alumni"
           element={
             <Layout>
@@ -146,7 +147,7 @@ function App() {
         </Route>
        
        
-        <Route
+        <Route exact
           path="/alumni-reg"
           element={
             <Layout>
@@ -157,7 +158,7 @@ function App() {
         </Route>
        
        
-        <Route
+        <Route exact
           path="/sports"
           element={
             <Layout>
@@ -168,7 +169,7 @@ function App() {
         </Route>
 
        
-        <Route
+        <Route exact
           path="/seminars"
           element={
             <Layout>
@@ -180,7 +181,7 @@ function App() {
 
 
        
-        <Route
+        <Route exact
           path="/annual"
           element={
             <Layout>
@@ -191,7 +192,7 @@ function App() {
         </Route>
 
        
-        <Route
+        <Route exact
           path="/aicte"
           element={
             <Layout>
@@ -202,7 +203,7 @@ function App() {
         </Route>
 
        
-        <Route
+        <Route exact
           path="/mou"
           element={
             <Layout>
@@ -213,7 +214,7 @@ function App() {
         </Route>
 
        
-        <Route
+        <Route exact
           path="/gallery"
           element={
             <Layout>
@@ -224,7 +225,19 @@ function App() {
         </Route>
 
        
-        <Route
+       
+        <Route exact
+          path="/committee"
+          element={
+            <Layout>
+              <Committee/>
+            </Layout>
+          }
+        >
+        </Route>
+
+       
+        <Route exact
           path="/contact"
           element={
             <Layout>
