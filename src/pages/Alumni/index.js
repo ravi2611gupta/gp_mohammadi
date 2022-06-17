@@ -5,12 +5,14 @@ import Loader from '../../components/Loader';
 
 function Index() {
 
+    const apiPrefix = process.env.REACT_APP_API_PREFIX
+
     const [spinner, setSpinner] = useState(false);
 
     const [alumni, setAlumni] = useState([])
     useEffect(()=>{
         setSpinner(true);
-        const res = axios.get('https://test.polyprep.co.in/mohammadi_api/alumni_show.php').then((data)=>{
+        const res = axios.get(`${apiPrefix}/alumni_show.php`).then((data)=>{
             console.log(data)
             setAlumni(data.data)
             setSpinner(false);
@@ -45,9 +47,9 @@ function Index() {
                         {!spinner?<tbody>
                         {alumni?alumni.map((alumni, idx) => {
                         return (
-                        <tr>
+                        <tr key={alumni.id}>
                         <td>{idx+1}</td>
-                        <th><img src={`https://test.polyprep.co.in/mohammadi_api/files/alumni_pic/${alumni.pic}`} alt="Sorry Something went wrong :(" /></th>
+                        <th><img src={`${apiPrefix}/files/alumni_pic/${alumni.pic}`} alt="Sorry Something went wrong :(" /></th>
                         <td><strong> {alumni.name} </strong></td>
                         <td>{alumni.designation}</td>
                         <td>{alumni.branch}</td>

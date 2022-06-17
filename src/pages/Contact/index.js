@@ -5,6 +5,8 @@ import Breadcrumb from '../../components/Breadcrumb'
 
 function Index() {
 
+    const apiPrefix = process.env.REACT_APP_API_PREFIX
+
     const [loading, setLoading] = useState(false);
 
     const [formData, setFormData] = useState({
@@ -32,7 +34,7 @@ function Index() {
           }
           else{
             try{
-                const res = await axios.post('http://localhost/mohammadi_api/contact_add.php', formData)
+                const res = await axios.post(`${apiPrefix}/contact_add.php`, formData)
                 console.log(res)
                 if(res.data.status==true){
                     setLoading(false);

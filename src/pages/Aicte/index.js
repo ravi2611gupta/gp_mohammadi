@@ -5,12 +5,14 @@ import Loader from '../../components/Loader';
 
 function Index() {
 
+    const apiPrefix = process.env.REACT_APP_API_PREFIX
+
     const [spinner, setSpinner] = useState(false);
 
     const [aicte, setAicte] = useState([])
     useEffect(()=>{
         setSpinner(true);
-        const res = axios.get('https://test.polyprep.co.in/mohammadi_api/aicte_show.php').then((data)=>{
+        const res = axios.get(`${apiPrefix}/aicte_show.php`).then((data)=>{
             console.log(data)
             setAicte(data.data)
             setSpinner(false);
@@ -40,10 +42,10 @@ function Index() {
                             
                             {aicte?aicte.map((aicte, idx) => {
                             return (
-                            <tr>
+                            <tr key={aicte.doc_id}>
                             <th scope="row">{idx+1}</th>
                             <td>{aicte.title}</td>
-                            <td><a href={`https://test.polyprep.co.in/mohammadi_api/files/aicte/${aicte.file}`} target="_blank">Click Here to View</a></td>
+                            <td><a href={`${apiPrefix}/files/aicte/${aicte.file}`} target="_blank">Click Here to View</a></td>
                             <td>{aicte.date}</td>
                             </tr>
                             );

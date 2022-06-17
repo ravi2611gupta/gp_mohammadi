@@ -5,13 +5,15 @@ import Loader from '../../components/Loader';
 
 function Index() {
 
+  const apiPrefix = process.env.REACT_APP_API_PREFIX
+
   const [spinner, setSpinner] = useState(false);
 
   const [faculty, setFaculty] = useState([])
 
   useEffect(()=>{
     setSpinner(true);
-      const res = axios.get('http://localhost/mohammadi_api/teacher_show.php').then((data)=>{
+      const res = axios.get(`${apiPrefix}/teacher_show.php`).then((data)=>{
       console.log(data)
       setFaculty(data.data)
       setSpinner(false);
@@ -28,12 +30,12 @@ function Index() {
         {!spinner?<div className="row"> 
                 {faculty?faculty.map((fac,idx) => {
                   return (
-                    // <div className="item" key={gal.gal_id}><img src={`http://localhost/mohammadi_api/files/gallery/${gal.pic}`} style={{height: "160px"}} /></div>
-                    <div className="col-sm-3 pt-4">         
+                    // <div className="item" key={gal.gal_id}><img src={`${apiPrefix}/files/gallery/${gal.pic}`} style={{height: "160px"}} /></div>
+                    <div key={fac.tech_id} className="col-sm-3 pt-4">         
                     <div className="card my-card1 my-mentor-card">
                   <div className="card-body">
                     <div className="card-img">
-                      <img src={`http://localhost/mohammadi_api/files/teacher/${fac.pic}`} style={{height:"300px"}}/>
+                      <img src={`${apiPrefix}/files/teacher/${fac.pic}`} style={{height:"300px"}}/>
                     </div>
                     <div className="card-text my-card-text">
                       <h5><strong>{fac.name}</strong></h5>

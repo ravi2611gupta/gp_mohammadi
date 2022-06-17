@@ -1,61 +1,62 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import Breadcrumb from '../../components/Breadcrumb'
+import CommitteeMem from '../../components/CommitteeMem';
+import Loader from '../../components/Loader';
 
-function index() {
+function Index() {
+
+    const apiPrefix = process.env.REACT_APP_API_PREFIX
+
+    const [spinner, setSpinner] = useState(false);
+
+    const [committee, setCommittee] = useState([])
+    useEffect(()=>{
+        setSpinner(true);
+        const res = axios.get(`${apiPrefix}/committee_show.php`).then((data)=>{
+            console.log(data)
+            setCommittee(data.data)
+            setSpinner(false);
+        })
+    }, [])
+
   return (
     <>
 
-        <Breadcrumb heading="Committees" />
+    <Breadcrumb heading="Committees"/>
 
-        <div className="container">
-            
-            <div className="row mb-5">
-                <div className="col-sm-12 pt-4">
+    <div className="container">
 
-                <div class="accordion" id="accordionExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Accordion Item #1
+            {!spinner?<div className="row">
+                <div className="col-sm-12 pt-4 pb-5">
+                <div className="accordion" id="accordionExample">
+                {committee.map((committee,idx,arr)=>{
+                    return(
+                
+                    <div className="accordion-item" key={committee.cc_id}>
+                        <h2 className="accordion-header" id="headingOne">
+                        <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target={"#accordion"+committee.cc_id} aria-expanded="true" aria-controls="collapseOne">
+                            {committee.committee_name}
                         </button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        <div id={"accordion"+committee.cc_id} className={(!idx)? "accordion-collapse collapse show" : "accordion-collapse collapse"} aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div className="accordion-body">
+                            <CommitteeMem cc_id={committee.cc_id} />
                         </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Accordion Item #2
-                        </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Accordion Item #3
-                        </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                        </div>
-                    </div>
+                    
+                    )
+                })}
                     </div>
                 </div>
-            </div>
+            </div>:<div className='row'><div className='col-sm-12 py-5'><Loader/></div></div>}
+
 
         </div>
+
     </>
   )
 }
 
-export default index
+export default Index

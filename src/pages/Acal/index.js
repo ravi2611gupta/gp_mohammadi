@@ -7,10 +7,12 @@ function Index() {
 
   const [spinner, setSpinner] = useState(false);
 
+  const apiPrefix = process.env.REACT_APP_API_PREFIX
+
   const [acal, setAcal] = useState([])
   useEffect(()=>{
     setSpinner(true);
-     const res = axios.get('https://test.polyprep.co.in/mohammadi_api/acal_show.php').then((data)=>{
+     const res = axios.get(`${apiPrefix}/acal_show.php`).then((data)=>{
        console.table("Academic Calendar : ",data)
        console.log(data)
        setAcal(data.data)
@@ -43,9 +45,9 @@ function Index() {
                    {acal?acal.map((acal, idx) => {
                      return (
                      
-                     <tr>
+                     <tr key={acal.acal_id}>
                      <td>{idx+1}</td>
-                     <td><a href={`https://test.polyprep.co.in/mohammadi_api/files/acal/${acal.acal_file}`} target="_blank"> Click here to view </a></td>
+                     <td><a href={`${apiPrefix}/files/acal/${acal.acal_file}`} target="_blank"> Click here to view </a></td>
                      <td>{acal.session}</td>
                      </tr>
                      );

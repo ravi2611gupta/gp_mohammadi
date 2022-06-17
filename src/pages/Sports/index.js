@@ -5,12 +5,14 @@ import Loader from '../../components/Loader';
 
 function Index() {
 
+  const apiPrefix = process.env.REACT_APP_API_PREFIX
+
   const [spinner, setSpinner] = useState(false);
 
   const [sport, setSport] = useState([])
   useEffect(()=>{
     setSpinner(true);
-    const res = axios.get('https://test.polyprep.co.in/mohammadi_api/sports_show.php').then((data)=>{
+    const res = axios.get(`${apiPrefix}/sports_show.php`).then((data)=>{
       console.log(data)
       setSport(data.data)
       setSpinner(false);
@@ -29,9 +31,9 @@ function Index() {
         {sport?sport.map((sport) => {
               return (
               
-              <div className="col-sm-3 mt-4">
+              <div key={sport.gal_id} className="col-sm-3 mt-4">
               <div className="card gal">
-                <a href={`https://test.polyprep.co.in/mohammadi_api/files/gallery/${sport.pic}`} data-fancybox="gallery"><img src={`https://test.polyprep.co.in/mohammadi_api/files/gallery/${sport.pic}`} alt="" className='' /></a>
+                <a href={`${apiPrefix}/files/gallery/${sport.pic}`} data-fancybox="gallery"><img src={`${apiPrefix}/files/gallery/${sport.pic}`} alt="" className='' /></a>
               </div>
               </div>
               );

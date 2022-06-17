@@ -4,7 +4,9 @@ import toast from "react-hot-toast";
 import Breadcrumb from "../../components/Breadcrumb";
 
 function Index() {
- 
+
+  const apiPrefix = process.env.REACT_APP_API_PREFIX
+
   const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -79,7 +81,7 @@ function Index() {
     try {
             const res = await axios({
               method: "post",
-              url: "https://test.polyprep.co.in/mohammadi_api/alumni_add.php",
+              url: `${apiPrefix}/alumni_add.php`,
               data: formData,
               headers: { "Content-Type": "multipart/form-data",},
               });

@@ -7,6 +7,10 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Loader from '../../components/Loader';
 
+  
+const apiPrefix = process.env.REACT_APP_API_PREFIX
+
+
 const menOptions = {
   margin: 1,
   responsiveClass: true,
@@ -69,12 +73,13 @@ const galOptions = {
 
 function Index() {
 
+
   const [spinner, setSpinner] = useState(false);
 
   
   const [slider, setSlider] = useState([])
   useEffect(()=>{
-  const res = axios.get('http://localhost/mohammadi_api/slider_show.php').then((data)=>{
+  const res = axios.get(`${apiPrefix}/slider_show.php`).then((data)=>{
     console.log("slider response : ",data)
     setSlider(data.data)
   })
@@ -83,7 +88,7 @@ function Index() {
 
   const [genNoti, setGenNoti] = useState([])
   useEffect(()=>{
-    const res1 = axios.get('http://localhost/mohammadi_api/noti_general.php').then((data1)=>{
+    const res1 = axios.get(`${apiPrefix}/noti_general.php`).then((data1)=>{
       console.log(data1)
       setGenNoti(data1.data)
     })
@@ -91,7 +96,7 @@ function Index() {
 
   const [deptNoti, setDeptNoti] = useState([])
   useEffect(()=>{
-    const res1 = axios.get('http://localhost/mohammadi_api/noti_department.php').then((data1)=>{
+    const res1 = axios.get(`${apiPrefix}/noti_department.php`).then((data1)=>{
       console.log(data1)
       setDeptNoti(data1.data)
     })
@@ -99,7 +104,7 @@ function Index() {
 
   const [examNoti, setExamNoti] = useState([])
   useEffect(()=>{
-    const res1 = axios.get('http://localhost/mohammadi_api/noti_examination.php').then((data1)=>{
+    const res1 = axios.get(`${apiPrefix}/noti_examination.php`).then((data1)=>{
       console.log(data1)
       setExamNoti(data1.data)
     })
@@ -108,7 +113,7 @@ function Index() {
 
   const [latestNoti, setLatestNoti] = useState([])
   useEffect(()=>{
-    const res2 = axios.get('http://localhost/mohammadi_api/latest_noti_show.php').then((data2)=>{
+    const res2 = axios.get(`${apiPrefix}/latest_noti_show.php`).then((data2)=>{
       console.log("Latest Notices : ",data2)
       setLatestNoti(data2.data);
     })
@@ -118,7 +123,7 @@ function Index() {
   const [gal, setGal] = useState([])
   useEffect(()=>{
     setSpinner(true);
-    const res3 = axios.get('http://localhost/mohammadi_api/gallery_show_all.php').then((data3)=>{
+    const res3 = axios.get(`${apiPrefix}/gallery_show_all.php`).then((data3)=>{
       console.log(data3)
       setGal(data3.data)
       setSpinner(false);
@@ -126,7 +131,6 @@ function Index() {
   }, [])
 
 
-  let flag = 1;
   return (
    
     <>
@@ -147,8 +151,8 @@ function Index() {
 
               {slider.map((slider,idx,arr)=>{
                 return(
-                  <div className={(!idx)? "carousel-item my-slide active" : "carousel-item my-slide"} data-bs-interval="2000">
-                  <img src={`http://localhost/mohammadi_api/files/slider/${slider.pic}`} className="d-block w-100" alt="..."/>
+                  <div key={slider.slider_id} className={(!idx)? "carousel-item my-slide active" : "carousel-item my-slide"} data-bs-interval="2000">
+                  <img src={`${apiPrefix}/files/slider/${slider.pic}`} className="d-block w-100" alt="..."/>
                   <div className="slider-text" >
                     <h3>{slider.text1}</h3>
                     <h6>{slider.text2}</h6>
@@ -183,7 +187,7 @@ function Index() {
           <marquee behavior="scroll" direction="left">
           {latestNoti?latestNoti.map((lnoti) => {
                   return (
-                    <a href={`http://localhost/mohammadi_api/files/notice/${lnoti.file_name}`} key={lnoti.file_id} target="_blank"> <img src={require('../../img/new1.gif')}/>  {lnoti.notice} </a>
+                    <a href={`${apiPrefix}/files/notice/${lnoti.file_name}`} key={lnoti.file_id} target="_blank"> <img src={require('../../img/new1.gif')}/>  {lnoti.notice} </a>
                   );
                 }):"Sorry, no data found!"}
 
@@ -219,7 +223,7 @@ function Index() {
                   <marquee behavior="scroll" direction="down" className="marquee-notice">
                         {genNoti?genNoti.map((genNoti) => {
                           return (
-                            <a href={`http://localhost/mohammadi_api/files/notice/${genNoti.file_name}`} key={genNoti.file_id} target="_blank" style={{display:"block"}}> <img src={require('../../img/new1.gif')}/>  {genNoti.notice} </a>
+                            <a href={`${apiPrefix}/files/notice/${genNoti.file_name}`} key={genNoti.file_id} target="_blank" style={{display:"block"}}> <img src={require('../../img/new1.gif')}/>  {genNoti.notice} </a>
                           );
                         }):"Sorry, no data found!"}
                   </marquee>
@@ -235,7 +239,7 @@ function Index() {
                   <marquee behavior="scroll" direction="down" className="marquee-notice">
                         {deptNoti?deptNoti.map((deptNoti) => {
                           return (
-                            <a href={`http://localhost/mohammadi_api/files/notice/${deptNoti.file_name}`} key={deptNoti.file_id} target="_blank" style={{display:"block"}}> <img src={require('../../img/new1.gif')}/>  {deptNoti.notice} </a>
+                            <a href={`${apiPrefix}/files/notice/${deptNoti.file_name}`} key={deptNoti.file_id} target="_blank" style={{display:"block"}}> <img src={require('../../img/new1.gif')}/>  {deptNoti.notice} </a>
                           );
                         }):"Sorry, no data found!"}
                   </marquee>
@@ -251,7 +255,7 @@ function Index() {
                   <marquee behavior="scroll" direction="down" className="marquee-notice">
                         {examNoti?examNoti.map((examNoti) => {
                           return (
-                            <a href={`http://localhost/mohammadi_api/files/notice/${examNoti.file_name}`} key={examNoti.file_id} target="_blank" style={{display:"block"}}> <img src={require('../../img/new1.gif')}/>  {examNoti.notice} </a>
+                            <a href={`${apiPrefix}/files/notice/${examNoti.file_name}`} key={examNoti.file_id} target="_blank" style={{display:"block"}}> <img src={require('../../img/new1.gif')}/>  {examNoti.notice} </a>
                           );
                         }):"Sorry, no data found!"}
                   </marquee>
@@ -846,7 +850,7 @@ function Index() {
 
             {gal?gal.map((gal) => {
               return (
-                <div className="item" key={gal.gal_id}><img src={`http://localhost/mohammadi_api/files/gallery/${gal.pic}`} style={{height: "160px"}} /></div>
+                <div className="item" key={gal.gal_id}><img src={`${apiPrefix}/files/gallery/${gal.pic}`} style={{height: "160px"}} /></div>
               );
             }):""}
 

@@ -5,13 +5,15 @@ import Loader from '../../components/Loader';
 
 function Index() {
 
+
+  const apiPrefix = process.env.REACT_APP_API_PREFIX
   
   const [spinner, setSpinner] = useState(false);
 
   const [annual, setAnnual] = useState([])
   useEffect(()=>{
     setSpinner(true);
-    const res = axios.get('https://test.polyprep.co.in/mohammadi_api/annual_show.php').then((data)=>{
+    const res = axios.get(`${apiPrefix}/annual_show.php`).then((data)=>{
       console.log(data)
       setAnnual(data.data)
       setSpinner(false);
@@ -32,7 +34,7 @@ function Index() {
               return (
               <div className="col-sm-3 mt-4">
               <div className="card gal">
-                <a href={`https://test.polyprep.co.in/mohammadi_api/files/gallery/${annual.pic}`} data-fancybox="gallery"><img src={`https://test.polyprep.co.in/mohammadi_api/files/gallery/${annual.pic}`} alt="" className='' /></a>
+                <a href={`${apiPrefix}/files/gallery/${annual.pic}`} data-fancybox="gallery"><img src={`${apiPrefix}/files/gallery/${annual.pic}`} alt="" className='' /></a>
               </div>
               </div>
               );

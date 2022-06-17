@@ -5,6 +5,7 @@ import Breadcrumb from '../../components/Breadcrumb'
 
 function Index() {
 
+    const apiPrefix = process.env.REACT_APP_API_PREFIX
     
     const [loading, setLoading] = useState(false);
 
@@ -36,7 +37,7 @@ function Index() {
           }
           else{
             try{
-                const res = await axios.post('http://localhost/mohammadi_api/rag_add.php', formData)
+                const res = await axios.post(`${apiPrefix}/rag_add.php`, formData)
                 if(res.data.status == true){
                     setLoading(false);
                     toast.success(res.data.message)

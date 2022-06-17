@@ -5,12 +5,14 @@ import Loader from '../../components/Loader';
 
 function Index() {
   
+    const apiPrefix = process.env.REACT_APP_API_PREFIX
+
     const [spinner, setSpinner] = useState(false);
 
     const [videos,setVideos] = useState([]);
     useEffect(()=>{
         setSpinner(true);
-    const res = axios.get('http://localhost/mohammadi_api/video_show.php').then((data)=>{
+    const res = axios.get(`${apiPrefix}/video_show.php`).then((data)=>{
             setVideos(data.data)
             setSpinner(false);
         });

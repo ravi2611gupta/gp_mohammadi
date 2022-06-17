@@ -4,6 +4,8 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 function Index() {
 
+  const apiPrefix = process.env.REACT_APP_API_PREFIX
+
   const [loading, setLoading] = useState(false);
 
    const [formData,setFormData] = useState({
@@ -33,7 +35,7 @@ function Index() {
     else{
       try{
         console.log("Calling Serve Post ")
-        const res = await axios.post('https://test.polyprep.co.in/mohammadi_api/grievance_add.php',formData);
+        const res = await axios.post(`${apiPrefix}/grievance_add.php`,formData);
 
       console.log("response",res)
         setLoading(false);

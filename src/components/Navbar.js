@@ -5,9 +5,13 @@ import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom'
 function Navbar() {
 
+  
+const apiPrefix = process.env.REACT_APP_API_PREFIX
+
+
   const [timeTable, setTimeTable] = useState([])
   useEffect(()=>{
-    const res = axios.get('http://localhost/mohammadi_api/time_table_show.php').then((data)=>{
+    const res = axios.get(`${apiPrefix}/time_table_show.php`).then((data)=>{
       console.log(data)
       setTimeTable(data.data)
     })
@@ -16,7 +20,7 @@ function Navbar() {
 
   const [holiday, setHoliday] = useState([])
   useEffect(()=>{
-    const res = axios.get('http://localhost/mohammadi_api/holiday_show.php').then((data)=>{
+    const res = axios.get(`${apiPrefix}/holiday_show.php`).then((data)=>{
       console.log(data)
       setHoliday(data.data)
     })
@@ -25,7 +29,7 @@ function Navbar() {
 
   const [result, setResult] = useState([])
   useEffect(()=>{
-    const res = axios.get('http://localhost/mohammadi_api/result_show.php').then((data)=>{
+    const res = axios.get(`${apiPrefix}/result_show.php`).then((data)=>{
       console.log(data);
       setResult(data.data);
     })
@@ -94,13 +98,13 @@ function Navbar() {
                     <li><Link onClick={navBarClick} className="dropdown-item drp-item" to="/acal">Academic Calendar</Link></li>
                     {timeTable?timeTable.map((tt) => {
                     return (
-                    <li key={tt.t_id}><a className="dropdown-item drp-item" href={`http://localhost/mohammadi_api/files/time_table/${tt.time_table_file}`} target="_blank">Time Table</a></li>
+                    <li key={tt.t_id}><a className="dropdown-item drp-item" href={`${apiPrefix}/files/time_table/${tt.time_table_file}`} target="_blank">Time Table</a></li>
                     );
                     }):""}
                     <li><Link onClick={navBarClick} className="dropdown-item drp-item" to="/library">Library</Link></li>
                     {holiday?holiday.map((holiday) => {
                     return (
-                    <li key={holiday.t_id}><a className="dropdown-item drp-item" href={`http://localhost/mohammadi_api/files/time_table/${holiday.time_table_file}`} target="_blank">Holiday</a></li>
+                    <li key={holiday.t_id}><a className="dropdown-item drp-item" href={`${apiPrefix}/files/time_table/${holiday.time_table_file}`} target="_blank">Holiday</a></li>
                     );
                     }):""}
                     {/* <li><a className="dropdown-item drp-item" href="/"></a></li> */}
@@ -127,7 +131,7 @@ function Navbar() {
                   <li><a className="dropdown-item drp-item" href="https://bteup.ac.in/webapp/SYLLABUS.aspx?type=6" target="_blank">Syllabus</a></li>
                   {result?result.map((res)=>{
                     return(
-                      <li><a className="dropdown-item drp-item" href={`${res.link}`} target="_blank">Result</a></li>
+                      <li key={res.res_id} ><a className="dropdown-item drp-item" href={`${res.link}`} target="_blank">Result</a></li>
                     );
                   }):""}
                   <li><Link onClick={navBarClick} className="dropdown-item drp-item" to="/alumni">Alumni</Link></li>

@@ -12,10 +12,12 @@ function Footer() {
         border: "0.1em dashed #fff"
       };
 
-      
+  const apiPrefix = process.env.REACT_APP_API_PREFIX
+
+
   const [result, setResult] = useState([])
   useEffect(()=>{
-    const res = axios.get('http://localhost/mohammadi_api/result_show.php').then((data)=>{
+    const res = axios.get(`${apiPrefix}/result_show.php`).then((data)=>{
       console.log(data);
       setResult(data.data);
     })
@@ -59,7 +61,7 @@ function Footer() {
            <li><a href="https://jeecup.admissions.nic.in/" target="_blank"><i className="fas fa-external-link-alt"></i> &nbsp; JEECUP</a></li>
            {result?result.map((res)=>{
                     return(
-                      <li><a href={`${res.link}`} target="_blank"><i className="fas fa-external-link-alt"></i> &nbsp;  Exam Result</a></li>
+                      <li key={res.res_id}><a href={`${res.link}`} target="_blank"><i className="fas fa-external-link-alt"></i> &nbsp;  Exam Result</a></li>
                     );
                   }):""}
            <li><a href="https://urise.up.gov.in/student/login" target="_blank"><i className="fas fa-external-link-alt"></i> &nbsp; Student Login</a></li>

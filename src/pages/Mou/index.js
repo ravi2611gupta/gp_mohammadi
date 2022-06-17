@@ -5,12 +5,14 @@ import Loader from '../../components/Loader';
 
 function Index() {
 
+    const apiPrefix = process.env.REACT_APP_API_PREFIX
+
     const [spinner, setSpinner] = useState(false);
 
     const [mou, setMou] = useState()
     useEffect(()=>{
         setSpinner(true);
-        const res = axios.get('https://test.polyprep.co.in/mohammadi_api/mou_show.php').then((data)=>{
+        const res = axios.get(`${apiPrefix}/mou_show.php`).then((data)=>{
             console.log(data)
             setMou(data.data)
             setSpinner(false);
@@ -41,11 +43,11 @@ function Index() {
                         {!spinner?<tbody>
                         {mou?mou.map((mou, idx) => {
                         return (
-                        <tr>
+                        <tr key={mou.doc_id}>
                         <th scope="row">{idx+1}</th>
                         <td>{mou.title}</td>
                         <td>{mou.company}</td>
-                        <td><a href={`https://test.polyprep.co.in/mohammadi_api/files/mou/${mou.file}`} target="_blank">Click Here to View</a></td>
+                        <td><a href={`${apiPrefix}/files/mou/${mou.file}`} target="_blank">Click Here to View</a></td>
                         <td>{mou.date}</td>
                         </tr>
                         );
